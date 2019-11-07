@@ -1,0 +1,241 @@
+\documentclass[11pt, a4paper]{article}
+
+%%%%%%%%%%%%%%%%%
+% Configuration %
+%%%%%%%%%%%%%%%%%
+\usepackage{allrunes}
+\usepackage{amsmath}
+% If magyar is wanted
+% \usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fixltx2e}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+
+% Here you can configure the layout
+\usepackage{geometry}
+\geometry{top=1cm, bottom=1cm, left=1.25cm,right=1.25cm, includehead, includefoot}
+\setlength{\columnsep}{7mm} % Column separation width
+
+\usepackage{graphicx}
+
+%\usepackage{gensymb}
+\usepackage{float}
+
+% For bra-ket notation
+\usepackage{braket}
+
+% To have a good appendix
+\usepackage[toc,page]{appendix}
+
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%
+% Custom commands %
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\bb}[1]{\mathbf{#1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Tr}[1]{\mathrm{Tr}\left(#1\right)}
+\newcommand{\Sp}[1]{\mathrm{Sp}\left({#1}\right)}
+
+% \newtheorem*{tetel*}{Tétel}
+% \newtheorem*{defn*}{Definíció}
+% \newtheorem*{pld*}{Példa}
+% \newtheorem*{megj*}{Megjegyzés}
+% \newtheorem*{allit*}{Állítás}
+
+% \newtheorem{tetel}{Tétel}
+% \newtheorem{defn}{Definíció}
+% \newtheorem{pld}{Példa}
+% \newtheorem{megj}{Megjegyzés}
+% \newtheorem{allit}{Állítás}
+
+% Hyperref should be generally the last package to load
+% Any configuration that should be done before the end of the preamble:
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}
+
+\title{Statistical physics cheat sheet}
+
+\author{Nagy Dániel}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{Fock-states}
+\begin{align*}
+    &\ket 0 = \ket{0,0,0,\dots} \\
+    &\braket{0|0} = \braket{\dots,0,0,0|0,0,0,\dots} = 1\\
+    &\braket{\dots, n_i', \dots, n_2', n_1' | n_1, n_2, \dots, n_i, \dots}
+    = \dots\times\delta_{n_1n_1'}\times\delta_{n_2n_2'}\times\dots\times\delta_{n_in_i'}\times\dots
+\end{align*}
+
+\section{Creation and annihillation operators}
+\subsection{Fermionic creation and annihillation operators}
+\begin{align*}
+    &\hat a_k^{\dagger} \ket{n_1, \dots, n_k, \dots} = \sqrt{1-n_k} (-1)^{\Sigma_k} \ket{n_1, \dots, 1 + n_k, \dots} \\
+    &\hat a_k \ket{n_1, \dots, n_k, \dots} = \sqrt{n_k} (-1)^{\Sigma_k} \ket{n_1, \dots, 1 - n_k, \dots}\\
+    &n_k \in \{0,1\},~ \Sigma_k = \sum\limits_{j=1}^{k-1}n_j \\
+    &\hat a_k^{\dagger} \ket{n_1, \dots, n_{k-1}, 1, n_{k+1},\dots} = 0 \\
+    &\hat a_k \ket{n_1, \dots, n_{k-1}, 0, n_{k+1},\dots} = 0\\
+    &\hat a_k = (\hat a_k^{\dagger})^{\dagger}
+\end{align*}
+Anticommutation relations:
+\begin{align*}
+    &\{\hat a_k, \hat a_l^{\dagger}\}  = \hat a_k\hat a_l^{\dagger}+\hat a_l^{\dagger}\hat a_k = \delta_{kl}\\
+    &\{\hat a_k, \hat a_l\} = \{ \hat a_k^{\dagger}, \hat a_l^{\dagger} \} = 0
+\end{align*}
+\subsection{Bosonic creation and annihillation operators}
+\begin{align*}
+    &\hat a_k^{\dagger} \ket{n_1, \dots, n_k, \dots} = \sqrt{1+n_k}\ket{n_1, \dots, n_k + 1, \dots} \\
+    &\hat a_k \ket{n_1, \dots, n_k, \dots} = \sqrt{n_k} \ket{n_1, \dots, n_k - 1, \dots} \\
+    &n_k \in \{0,1,\dots\}\\
+    &\hat a_k^{\dagger} \ket{n_1, \dots, n_{k-1}, 1, n_{k+1},\dots} = 0 \\
+    &\hat a_k \ket{n_1, \dots, n_{k-1}, 0, n_{k+1},\dots} = 0\\
+\end{align*}
+Commutation relations:
+\begin{align*}
+    &[\hat a_k, \hat a_l^{\dagger}]  = \hat a_k\hat a_l^{\dagger}+\hat a_l^{\dagger}\hat a_k = \delta_{kl}\\
+    &[\hat a_k, \hat a_l] = [ \hat a_k^{\dagger}, \hat a_l^{\dagger} ] = 0
+\end{align*}
+For bosons only:
+\begin{align*}
+    &\ket{n_1, \dots, n_k, \dots} = \frac{1}{\sqrt{\prod\limits_{i=1}^{\infty}n_i!}}
+    (\hat a_1^{\dagger})^{n_1}\times(\hat a_2^{\dagger})^{n_2}\times\dots\times(\hat a_k^{\dagger})^{n_k}\times
+    \dots\ket{0}.
+\end{align*}
+\textbf{For both bosons and fermions:}
+\begin{itemize}
+    \item $\hat n_k = \hat a_k^{\dagger}\hat a_k $ gives the number of particles in the $k$-th eigenstate:
+    \begin{equation*}
+        \hat n_k \ket{n_1, \dots, n_k, \dots} = n_k \ket{n_1, \dots, n_k, \dots}.
+    \end{equation*}
+    \item $\hat N = \sum\limits_k \hat n_k$ gives the total number of particles:
+    \begin{equation*}
+        \hat N \ket{n_1, \dots, n_k, \dots} = \sum\limits_{j=1}^{\infty}n_j \ket{n_1, \dots, n_k, \dots}
+        = N \ket{n_1, \dots, n_k, \dots}.
+    \end{equation*}
+    \item $\braket{0|0} = 1$
+    \item $\bra 0 \hat a_k^{\dagger} = 0$
+    \item $\hat a_k \ket 0 = 0$
+\end{itemize}
+\section{Field operators}
+\begin{align*}
+    &\hat\Psi^{\dagger}(x) = \sum\limits_{j=1}^{\infty}\varphi^*_j(x)\hat a_j^{\dagger}\\
+    &\hat\Psi(x) = \sum\limits_{j=1}^{\infty}\varphi_j(x)\hat a_j,
+\end{align*}
+where $\varphi_j(x) = \braket{x|j}$ is the wavefunction of the $j$-th one-particle eigenstate.
+
+The field operator satisfy the anticommutation relations for fermions:
+\begin{align*}
+    &\{\hat\Psi(x),\hat\Psi^{\dagger}(y)\} = \delta(x-y)\\
+    &\{\hat\Psi^{\dagger}(x),\hat\Psi^{\dagger}(y)\} = \{\hat\Psi(x),\hat\Psi(y)\} = 0
+\end{align*}
+And for bosons, the commutation relations:
+\begin{align*}
+    &[\hat\Psi(x),\hat\Psi^{\dagger}(y)] = \delta(x-y)\\
+    &[\hat\Psi^{\dagger}(x),\hat\Psi^{\dagger}(y)] = [\hat\Psi(x),\hat\Psi(y)] = 0
+\end{align*}
+
+The particle number operator is 
+\begin{equation*}
+    \hat N = \int\dd x \hat\Psi^{\dagger}(x)\hat\Psi(x) = \dots = \sum\limits_{k=1}^{\infty}\hat a_k^{\dagger}\hat a_k
+\end{equation*}
+
+Calculating the first-quantized wavefunction for an $N$-particle system:
+Let $\ket{\Phi_N}$ be a second quantized state for which
+\begin{equation*}
+    \hat N \ket{\Phi_N} = N \ket{\Phi_N}.
+\end{equation*}
+The first-quantized wavefunction for this state is 
+\begin{equation*}
+    \Phi(x_1, x_2, \dots, x_N) = \frac{1}{\sqrt{N!}}\Braket{0| \prod\limits_{j=1}^{N} \hat\Psi(x_j) | \Phi_N }.
+\end{equation*}
+
+\section{Operators}
+
+\section{Green function method}
+\subsection{Grand canonical ensemble}
+\begin{align*}
+    &\hat H = \hat H_0 + \hat H_1\\
+    &\hat K \vcentcolon= \hat H - \mu \hat N\\
+    &\hat K = \hat K_0 + \hat K_1\\
+    &\hat K_0 = \hat H_0 - \mu \hat N, ~ \hat K_1 = \hat H_1
+\end{align*}
+The trace of an operator:
+\begin{equation*}
+    \Sp{\hat A} = \Tr{\hat A} = \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1 | \hat A |n_1, \dots, n_i, \dots},
+\end{equation*}
+where the sum is over the entire Fock-space, not just the $N$-particle subspace.
+\par The grand canonical partition function is defined as 
+\begin{equation*}
+    Z_G = e^{-\beta\Omega(T,V,\mu)} = \Sp{e^{-\beta\hat K}} = 
+    \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1 | e^{-\beta\hat K} |n_1, \dots, n_i, \dots},
+\end{equation*}
+where $\beta = (1/k_BT)$.
+\par The grand canonical density matrix is 
+\begin{equation*}
+    \hat\rho_G = \frac{e^{-\beta\hat K}}{Z_G}.
+\end{equation*}
+The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
+\begin{equation*}
+    \langle \hat O \rangle = \Sp{\hat \rho_G \hat O}.
+\end{equation*}
+
+
+\section{Exercises}
+\begin{enumerate}
+    \item Find the eigenvalues and eigenvectors of $\hat a_k$ and $\hat a_k^{\dagger}$!
+    \item $\hat\Psi^{\dagger}(x)\ket 0 = ?$
+    \item $[\hat \Psi(x), \hat N] = ?$
+    \item Prove that 
+    \begin{align*}
+        &[\hat a_j, f(\hat a_j^{\dagger})] = \frac{\partial f(\hat a_j^{\dagger})}{\partial \hat a_j^{\dagger}}\\
+        &[\hat a_j^{\dagger}, f(\hat a_j)] = -\frac{\partial f(\hat a_j)}{\partial \hat a_j}
+    \end{align*}
+    Hint: Use the Taylor-expansion formula:
+    \begin{equation*}
+        f(\hat A) = \sum\limits_{k=1}^{\infty} \frac{1}{k!}f^{(k)}(0)\hat A^k
+    \end{equation*}
+    And the derivative is 
+    \begin{equation*}
+        \frac{\partial f(\hat A)}{\partial A} = \sum\limits_{k=1}^{\infty} \frac{1}{(k-1)!}f^{(k)}(0)\hat A^{k-1}
+    \end{equation*}
+    \item Calculate $\Sp {\hat N}$ for bosonic particles!
+    \par\textit{Solution}.
+    \begin{align*}
+        \Sp{\hat N} &= \sum\limits_{\{n_i\}}\braket{\dots,n_i,\dots,n_1 | \hat N |n_1, \dots, n_i, \dots} \\
+        & = \sum\limits_{\{n_i\}}\Braket{\dots,n_i,\dots,n_1 | \int\dd x \hat\Psi^{\dagger}(x)\hat\Psi(x) |n_1, \dots, n_i, \dots} \\
+        & = \sum\limits_{\{n_i\}}\Braket{\dots,n_i,\dots,n_1 | \int\dd x \sum\limits_{k,l}\varphi^*_k(x)\varphi_l(x)
+        \hat a_k^{\dagger}\hat a_l |n_1, \dots, n_i, \dots} \\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k,l}\int\dd x \varphi^*_k(x)\varphi_l(x) \braket{\dots,n_i,\dots,n_1 | \hat a_k^{\dagger}\hat a_l |n_1, \dots, n_i, \dots} \\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k,l}\int\dd x \varphi^*_k(x)\varphi_l(x) \braket{\dots,n_i,\dots,n_1 | \hat a_k^{\dagger}
+        \sqrt{n_l} |n_1, \dots, n_l-1, \dots} \\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k,l}\int\dd x \varphi^*_k(x)\varphi_l(x) \braket{\dots,n_i,\dots,n_1 | 
+        \sqrt{n_k+1}\sqrt{n_l} |n_1, \dots, n_k+1, \dots, n_l-1, \dots} \\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k,l} \sqrt{n_k+1}\sqrt{n_l} \int\dd x \varphi^*_k(x)\varphi_l(x) \braket{\dots,n_i,\dots,n_1 |n_1, \dots, n_k+1, \dots, n_l-1, \dots} \\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k,l} \sqrt{n_k+1}\sqrt{n_l} \int\dd x \varphi^*_k(x)\varphi_l(x) \delta_{kl} \\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k} n_k \underbrace{\int\dd x \varphi^*_k(x)\varphi_k(x)}_{=1}\\
+        & = \sum\limits_{\{n_i\}}\sum\limits_{k} n_k
+    \end{align*}
+    \item Calculate $\Sp {\hat H_0}$, where
+    \begin{equation*}
+        \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[-\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
+    \end{equation*}
+    \item Calculate $\langle \hat N \rangle$ for bosonic particles!
+\end{enumerate}
+
+\end{document}

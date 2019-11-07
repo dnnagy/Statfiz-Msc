@@ -1,0 +1,279 @@
+\documentclass[11pt, a4paper]{article}
+
+%%%%%%%%%%%%%%%%%
+% Configuration %
+%%%%%%%%%%%%%%%%%
+\usepackage{allrunes}
+\usepackage{amsmath}
+
+% If magyar is wanted
+%\usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fixltx2e}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+
+% Here you can configure the layout
+\usepackage{geometry}
+\geometry{top=1cm, bottom=1cm, left=1.25cm,right=1.25cm, includehead, includefoot}
+\setlength{\columnsep}{7mm}
+% Column separation width
+
+\usepackage{graphicx}
+
+%\usepackage{gensymb}
+\usepackage{float}
+
+% For bra-ket notation
+\usepackage{braket}
+
+% To have a good appendix
+\usepackage[toc,page]{appendix}
+
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%
+% Custom commands %
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\bb}[1]{\mathbf{#1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Tr}[1]{\mathrm{Tr}\left(#1\right)}
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+\newtheorem{rmk}{Remark}
+\newtheorem*{rmk*}{Remark}
+
+% Hyperref should be generally the last package to load
+% Any configuration that should be done before the end of the preamble:
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}
+
+\title{Homework 1}
+
+\author{Nagy Dániel}
+\date{\today}
+
+% \usepackage[backend=biber]{biblatex}
+% \addbibresource{references.bib}
+
+\begin{document}
+\maketitle
+\newpage
+\begin{enumerate}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 1 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Give the wave-function in first quantization which corresponds to the Fock-vector
+    \begin{equation*}
+        \ket{2,0,2,0,0,\dots}
+    \end{equation*}
+    of four particles and the fermionic wave-function corresponding to 
+    \begin{equation*}
+        \ket{1,0,1,1,1,0,0,\dots}
+    \end{equation*}
+    \par \textit{Solution.}
+    The state $\ket{2,0,2,0,0,\dots}$ is a bosonic state since more than 1 particle is in the same state.
+    \begin{equation*}
+        \ket{2,0,2,0,0,\dots} = \frac{1}{\sqrt {2!}}(\hat a_1^{\dagger})^2\frac{1}{\sqrt {2!}}(\hat a_3^{\dagger})^2\ket 0
+    \end{equation*}
+    \begin{align*}
+        \phi(x_1, x_2, \dots) &= \frac{1}{\sqrt{4!}}\braket{0|\hat\Psi(x_1)\hat\Psi(x_2)\hat\Psi(x_3)\hat\Psi(x_4)|2,0,2,0,0,\dots}\\
+                              &= \frac{1}{\sqrt{4!}}\frac{1}{\sqrt {2!}}\frac{1}{\sqrt {2!}}
+                              \braket{0|\hat\Psi(x_1)\hat\Psi(x_2)\hat\Psi(x_3)\hat\Psi(x_4)(\hat a_1^{\dagger})^2(\hat a_3^{\dagger})^2|0}
+    \end{align*}
+    \begin{equation*}
+        \hat\Psi(x_i) = \sum\limits_j \varphi_j(x_i)\hat a_j
+    \end{equation*}
+    \begin{align*}
+        \phi(x_1, x_2, \dots) & = \frac{1}{96} \sum\limits_j\sum\limits_k\sum\limits_l\sum\limits_m
+                              \braket{0|\varphi_j(x_1)\hat a_j \varphi_k(x_2)\hat a_k \varphi_l(x_3)
+                              \hat a_l \varphi_m(x_4)\hat a_m (\hat a_1^{\dagger})^2(\hat a_3^{\dagger})^2|0}\\
+                              & = \frac{1}{96} \sum\limits_{j,k,l,m}\varphi_j(x_1)\varphi_k(x_2)\varphi_l(x_3)
+                              \varphi_m(x_4) \braket{0|\hat a_j\hat a_k\hat a_l
+                              \hat a_m (\hat a_1^{\dagger})^2(\hat a_3^{\dagger})^2|0}
+    \end{align*}
+    \begin{equation*}
+        \left[\hat a_k,  \hat a_l^{\dagger}\right] = \delta_{kl}, ~ \hat a_k\ket 0 = 0
+    \end{equation*}
+    \begin{align*}
+        \braket{0|\hat a_j\hat a_k\hat a_l\hat a_m (\hat a_1^{\dagger})^2(\hat a_3^{\dagger})^2|0}
+        & = \braket{0|\hat a_j\hat a_k\hat a_l\hat a_m\hat a_1^{\dagger}\hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_3^{\dagger}|0}
+        \\
+        & = \braket{0|\hat a_j\hat a_k\hat a_l(\delta_{m1} + \hat a_1^{\dagger}\hat a_m)\hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_3^{\dagger}|0}
+        \\
+        & = \delta_{m1}\braket{0|\hat a_j\hat a_k\hat a_l\hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_3^{\dagger}|0}\\
+        & + \braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger}\hat a_m \hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_3^{\dagger}|0}
+        \\
+        & = \delta_{m1}\braket{0|\hat a_j\hat a_k (\delta_{l1} + \hat a_1^{\dagger}\hat a_l) \hat a_3^{\dagger}\hat a_3^{\dagger}|0}\\
+        & +  \braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger} (\delta_{m1} + \hat a_1^{\dagger}\hat a_m) \hat a_3^{\dagger}\hat a_3^{\dagger}|0}
+        \\
+        & = \delta_{m1}\delta_{l1}\braket{0|\hat a_j\hat a_k \hat a_3^{\dagger}\hat a_3^{\dagger}|0} \\
+        & + \delta_{m1}\braket{0|\hat a_j\hat a_k \hat a_1^{\dagger}\hat a_l\hat a_3^{\dagger}\hat a_3^{\dagger}|0}\\
+        & + \delta_{m1} \braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_3^{\dagger}|0}\\
+        & + \braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger}\hat a_1^{\dagger} \hat a_m \hat a_3^{\dagger}\hat a_3^{\dagger}|0}
+        \\
+        & = \delta_{m1}\delta_{l1}\braket{0|\hat a_j(\delta_{k3} + \hat a_3^{\dagger}\hat a_k)\hat a_3^{\dagger}|0} \\
+        & + \delta_{m1}\braket{0|\hat a_j\hat a_k \hat a_1^{\dagger} (\delta_{l3} + \hat a_3^{\dagger}\hat a_l) \hat a_3^{\dagger}|0}\\
+        & + \delta_{m1}\braket{0|\hat a_j\hat a_k (\delta_{l1} + \hat a_1^{\dagger}\hat a_l) \hat a_3^{\dagger}\hat a_3^{\dagger}|0}\\
+        & + \braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger}\hat a_1^{\dagger} (\delta_{m3} + \hat a_3^{\dagger}\hat a_m) \hat a_3^{\dagger}|0}
+        \\
+        & = \delta_{m1}\delta_{l1}\delta_{k3}\braket{0|\hat a_j\hat a_k\hat a_3^{\dagger}|0} + \delta_{m1}\delta_{l1}\braket{0|\hat a_j\hat a_3^{\dagger}\hat a_k\hat a_3^{\dagger}|0} \\
+        & + \delta_{m1}\delta_{l3}\braket{0|\hat a_j\hat a_k \hat a_1^{\dagger} \hat a_3^{\dagger}|0} + \delta_{m1}\braket{0|\hat a_j\hat a_k \hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_l \hat a_3^{\dagger}|0}\\ 
+        & + \delta_{m1}\delta_{l1}\braket{0|\hat a_j\hat a_k\hat a_3^{\dagger}\hat a_3^{\dagger}|0} + \delta_{m1}\braket{0|\hat a_j\hat a_k\hat a_1^{\dagger}\hat a_l \hat a_3^{\dagger}\hat a_3^{\dagger}|0}\\
+        & + \delta_{m3}\braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger}\hat a_1^{\dagger}\hat a_3^{\dagger}|0} + \braket{0|\hat a_j\hat a_k\hat a_l \hat a_1^{\dagger}\hat a_1^{\dagger}\hat a_3^{\dagger}\hat a_m \hat a_3^{\dagger}|0}
+        \\
+        & = 
+    \end{align*}
+
+    For bosons, 
+    \begin{equation*}
+        \phi^B(x_1, x_2, x_3, x_4) = \frac{1}{\sqrt{4!\cdot 2! \cdot 2!}}\sum\limits_{(\alpha)}\prod\limits_{j=1}^4
+        \varphi_{\alpha_j}(x_j).
+    \end{equation*}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 2 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Calculate the quantity $\langle \hat n(\bb r) \rangle$ where $\Psi$ is a pure state in Fock-space:
+    \begin{equation*}
+        \Psi = \ket{n_1, n_2, \dots}.
+    \end{equation*}
+    Compare the result (obtained at the practice) for fermions, given by a single Slater-determinant in first
+    quantization.
+    
+    \par \textit{Solution.}
+    The particle number density in second quantization (in the spin-independent case) is
+    \begin{equation*}
+        \hat n (\bb r) = \hat \Psi^{\dagger}(\bb r)\hat \Psi(\bb r).
+    \end{equation*}
+    where 
+    \begin{align*}
+        &\hat \Psi^{\dagger}(\bb r) = \sum\limits_{i = 1}^N \varphi_i(\bb r)^{*}\hat a_i^{\dagger}. \\
+        &\hat \Psi(\bb r) = \sum\limits_{i = 1}^N \varphi_i(\bb r)\hat a_i.
+    \end{align*}
+    We also know how the fermionic creation and annihillation operators act on the Fock-space:
+    \begin{align*}
+        &\hat a_i^{\dagger} \ket{n_1, \dots, n_i, \dots} = \sqrt{1-n_i}(-1)^{\Sigma_i}\ket{n_1, \dots, 1+n_i, \dots}\\
+        &\hat a_i \ket{n_1, \dots, n_i, \dots} = \sqrt{n_i}(-1)^{\Sigma_i}\ket{n_1, \dots, 1-n_i, \dots}\\
+        & \textrm{where}~\Sigma_k = \sum\limits_{j=1}^{k-1}n_j.
+    \end{align*}
+    The expectation value of the particle number density operator in state $\ket \Psi$ is 
+    \begin{align*}
+        \langle \hat n(\bb r) \rangle &= \braket{\Psi |\hat n(\bb r)|\Psi}\\
+        & = \Braket{\Psi |\hat \Psi^{\dagger}(\bb r)\hat \Psi(\bb r)|\Psi}\\
+        & = \Braket{\Psi |\sum\limits_{i = 1}^N \varphi_i(\bb r)^{*}\hat a_i^{\dagger} \sum\limits_{j = 1}^N \varphi_j(\bb r)\hat a_j|\Psi}\\
+        & = \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r) \braket{\Psi|\hat a_i^{\dagger}\hat a_j|\Psi}\\
+        & = \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r)\braket{n_1,n_2 \dots | \hat a_i^{\dagger}\hat a_j|n_1, n2, \dots}\\
+        & = \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r)\braket{n_1,n_2 \dots | \hat a_i^{\dagger}\sqrt{n_j}(-1)^{\Sigma_j}| n_1, \dots 1-n_j, \dots} \\
+        & = \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r) \sqrt{n_j}(-1)^{\Sigma_j} \braket{n_1,n_2 \dots |\hat a_i^{\dagger}| n_1, \dots 1-n_j, \dots}\\
+        & = \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r) \sqrt{n_j}(-1)^{\Sigma_j}\sqrt{1-n_i}(-1)^{\Sigma_i}\braket{n_1,n_2 \dots |n_1, \dots, 1+n_i, \dots 1-n_j, \dots}
+    \end{align*}
+    From the orthogonality, we know that 
+    \begin{equation*}
+        \braket{n_1,n_2 \dots |n_1, \dots, 1+n_i, \dots 1-n_j, \dots} = \delta_{n_i, 1+n_i}\delta_{n_j, 1-n_j},
+    \end{equation*}
+    so, 
+    \begin{align*}
+        \langle \hat n(\bb r) \rangle &= \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r) \sqrt{n_j}(-1)^{\Sigma_j}\sqrt{1-n_i}(-1)^{\Sigma_i}\delta_{n_i, 1+n_i}\delta_{n_j, 1-n_j}\\
+        & = \sum\limits_{i,j = 1}^N \varphi_i(\bb r)^{*}\varphi_j(\bb r) \sqrt{n_j(1-n_i)}(-1)^{\Sigma_i+\Sigma_j}\delta_{n_i, 1+n_i}\delta_{n_j, 1-n_j}
+    \end{align*}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 3 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Show that for a pure $n$-particle fermionic state (given by a single Slater-determinant in first quantization)
+    \begin{equation*}
+        P(\bb r, s, \bb r', s') = n(\bb r, s)n(\bb r', s') - |n(\bb r, s, \bb r', s')|^2,
+    \end{equation*}
+    where $n(\bb r, s)$ is the spin dependent density and $n(\bb r, s, \bb r', s')$ is the density matrix.
+    The particle density operator in second quantization is 
+    \begin{equation*}
+        \hat n(\bb r, s) = \hat \Psi^{\dagger}(\bb r,s)\hat \Psi(\bb r, s)
+    \end{equation*}
+    and the pair correlation operator is 
+    \begin{equation*}
+        \hat P(\bb r, s, \bb r', s') = \hat \Psi^{\dagger}(\bb r,s)\hat \Psi^{\dagger}(\bb r',s')\hat \Psi(\bb r, s)\hat \Psi(\bb r', s')
+    \end{equation*}
+    For fermions, the field operators satisfy the anticommutation relations:
+    \begin{equation*}
+        \left\{\hat\Psi(\bb r, s), \hat\Psi^{\dagger}(\bb r', s')\right\} = \delta(\bb r-\bb r')\delta_{ss'}.
+    \end{equation*}
+    Thus, 
+    \begin{align*}
+        \hat n(\bb r, s)\hat n(\bb r', s') & = \hat \Psi^{\dagger}(\bb r,s)\hat \Psi(\bb r, s)\hat \Psi^{\dagger}(\bb r',s')\hat \Psi(\bb r', s')\\
+        & = \hat \Psi^{\dagger}(\bb r,s) \left(\delta(\bb r-\bb r')\delta_{ss'} - \hat\Psi^{\dagger}(\bb r',s')\hat \Psi(\bb r, s) \right)\hat \Psi(\bb r', s')\\
+        & = \delta(\bb r-\bb r')\delta_{ss'}\hat \Psi^{\dagger}(\bb r,s)\hat \Psi(\bb r', s') - \hat \Psi^{\dagger}(\bb r,s) \hat\Psi^{\dagger}(\bb r',s')\hat \Psi(\bb r, s)\hat \Psi(\bb r', s')\\
+        & = \delta(\bb r-\bb r')\delta_{ss'}\hat \Psi^{\dagger}(\bb r,s)\hat \Psi(\bb r', s') - \hat P(\bb r, s, \bb r', s').
+    \end{align*}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 4 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Prove that the particle number operator 
+    \begin{equation*}
+        \hat N = \sum\limits_s\int\dd^3r\hat\Psi^{\dagger}(\bb r, s)\hat\Psi(\bb r, s)
+    \end{equation*}
+    and the Hamiltonian
+    \begin{align*}
+        \hat H &= \sum\limits_s \int \dd^3r\hat\Psi^{\dagger}(\bb r, s) \left(\frac{-\hbar^2}{2m}\nabla^2 + V(\bb r)\right)\hat\Psi(\bb r, s) \\
+               &+ \frac{1}{2}\sum\limits_{s, s'}\int \dd^3r\int\dd^3r' \hat\Psi^{\dagger}(\bb r, s)
+               \hat\Psi^{\dagger}(\bb r', s')v(|\bb r - \bb r'|)\hat\Psi(\bb r', s')\hat\Psi(\bb r, s)
+    \end{align*}
+    commute:
+    \begin{equation*}
+        \left[\hat H,\hat N\right] = 0,
+    \end{equation*}
+    for both bosons and fermions.
+
+    \par\textit{Solution.}
+    Let's Introduce $\hat K = \frac{-\hbar^2}{2m}\nabla^2$. We know that the commutation is a linear operation,
+    that is 
+    \begin{equation*}
+        \left[\int \dd ^3r \hat A(r) , \int \dd^3 r' \hat B (r') \right] = \int \dd ^3r \int \dd^3 r' \left[\hat A(r), \hat B(r')\right].
+    \end{equation*}
+    Therefore, 
+    \begin{align*}
+        \left[\hat H, \hat N\right] & = \left[\sum\limits_s \int \dd^3r\hat\Psi^{\dagger}(\bb r, s) \left(\hat K + V(\bb r)\right)\hat\Psi(\bb r, s), \hat N \right]\\
+        & + \left[\frac{1}{2}\sum\limits_{s, s'}\int \dd^3r\int\dd^3r' \hat\Psi^{\dagger}(\bb r, s) \hat\Psi^{\dagger}(\bb r', s')v(|\bb r - \bb r'|)\hat\Psi(\bb r', s')\hat\Psi(\bb r, s), \hat N\right]
+        \\
+        & = \sum\limits_s \int \dd^3r \left[ \hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s) , \hat N \right]
+        + \sum\limits_s \int \dd^3r \left[ \hat\Psi^{\dagger}(\bb r, s)V(\bb r)\hat\Psi(\bb r, s), \hat N \right]\\
+        & + \frac{1}{2}\sum\limits_{s, s'}\int \dd^3r\int\dd^3r' \left[\hat\Psi^{\dagger}(\bb r, s) \hat\Psi^{\dagger}(\bb r', s')v(|\bb r - \bb r'|)\hat\Psi(\bb r', s')\hat\Psi(\bb r, s), \hat N\right].
+    \end{align*}
+    Now, let's substitute $\hat N$, but change $s$ to $\sigma$ and $\bb r$ to $\bb x$in the sum:
+    \begin{align*}
+        \left[\hat H, \hat N\right] & = \sum\limits_s \int \dd^3r \left[ \hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s) , \sum\limits_{\sigma}\int\dd^3 x\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right]\\
+        & + \sum\limits_s \int \dd^3r \left[ \hat\Psi^{\dagger}(\bb r, s)V(\bb r)\hat\Psi(\bb r, s), \sum\limits_{\sigma}\int\dd^3 x\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right]\\
+        & + \frac{1}{2}\sum\limits_{s, s'}\int \dd^3r\int\dd^3r' \left[\hat\Psi^{\dagger}(\bb r, s)
+        \hat\Psi^{\dagger}(\bb r', s')v(|\bb r - \bb r'|)\hat\Psi(\bb r', s')\hat\Psi(\bb r, s), \sum\limits_{\sigma}\int\dd^3 x\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right]
+        \\
+        & = \sum\limits_{s, \sigma} \int \dd^3r\dd^3 x  \left[ \hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s) ,\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right]\\
+        & + \sum\limits_{s, \sigma} \int \dd^3r\dd^3 x  \left[ \hat\Psi^{\dagger}(\bb r, s)V(\bb r)\hat\Psi(\bb r, s) ,\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right]\\
+        & +  \frac{1}{2}\sum\limits_{s, s', \sigma}\int \dd^3r\dd^3r'\dd^3x
+        \left[ \hat\Psi^{\dagger}(\bb r, s)\hat\Psi^{\dagger}(\bb r', s')v(|\bb r - \bb r'|)\hat\Psi(\bb r', s')\hat\Psi(\bb r, s), \hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma)\right]
+    \end{align*}
+    So, we have to calculate three commutators:
+    \begin{align*}
+        & \left[ \hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s) ,\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right] = \, ? \\
+        & \left[ \hat\Psi^{\dagger}(\bb r, s)V(\bb r)\hat\Psi(\bb r, s) ,\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right] = \, ? \\
+        & \left[ \hat\Psi^{\dagger}(\bb r, s)\hat\Psi^{\dagger}(\bb r', s')v(|\bb r - \bb r'|)\hat\Psi(\bb r', s')\hat\Psi(\bb r, s), \hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma)\right] = \, ? 
+    \end{align*}
+    \begin{align*}
+        \left[\hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s) ,\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \right]
+        & = \hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s)\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) - \hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma)\hat\Psi^{\dagger}(\bb r, s)\hat K\hat\Psi(\bb r, s) \\
+        & = \hat K\hat\Psi^{\dagger}(\bb r, s)\hat\Psi(\bb r, s)\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) 
+        + \left[\hat\Psi^{\dagger}(\bb r, s), \hat K \right] \hat\Psi(\bb r, s)\hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma) \\
+        & - \hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma)\hat\Psi^{\dagger}(\bb r, s)\hat\Psi(\bb r, s)\hat K - \hat\Psi^{\dagger}(\bb x, \sigma)\hat\Psi(\bb x, \sigma)\hat\Psi^{\dagger}(\bb r, s)\left[\hat K,\hat\Psi(\bb r, s)\right] \\
+        & =
+    \end{align*}
+\end{enumerate}
+\end{document}
