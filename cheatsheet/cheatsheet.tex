@@ -18,6 +18,11 @@
 \usepackage{amssymb}
 \usepackage{xcolor}
 
+% using circled symbols
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1}}}
+
 
 % Here you can configure the layout
 \usepackage{geometry}
@@ -80,7 +85,7 @@
     &\ket 0 = \ket{0,0,0,\dots} \\
     &\braket{0|0} = \braket{\dots,0,0,0|0,0,0,\dots} = 1\\
     &\braket{\dots, n_i', \dots, n_2', n_1' | n_1, n_2, \dots, n_i, \dots}
-    = \dots\times\delta_{n_1n_1'}\times\delta_{n_2n_2'}\times\dots\times\delta_{n_in_i'}\times\dots
+    = \cdots\times\delta_{n_1n_1'}\times\delta_{n_2n_2'}\times\cdots\times\delta_{n_in_i'}\times\cdots
 \end{align*}
 
 \section{Creation and annihillation operators}
@@ -165,7 +170,9 @@ The first-quantized wavefunction for this state is
     \Phi(x_1, x_2, \dots, x_N) = \frac{1}{\sqrt{N!}}\Braket{0| \prod\limits_{j=1}^{N} \hat\Psi(x_j) | \Phi_N }.
 \end{equation*}
 
-\section{Operators}
+\section{Fock-space operators}
+Single particle operators:
+
 
 \section{Green function method}
 \subsection{Grand canonical ensemble}
@@ -177,12 +184,12 @@ The first-quantized wavefunction for this state is
 \end{align*}
 The trace of an operator:
 \begin{equation*}
-    \Sp{\hat A} = \Tr{\hat A} = \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1 | \hat A |n_1, \dots, n_i, \dots},
+    \Tr{\hat A} = \Tr{\hat A} = \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1 | \hat A |n_1, \dots, n_i, \dots},
 \end{equation*}
 where the sum is over the entire Fock-space, not just the $N$-particle subspace.
 \par The grand canonical partition function is defined as 
 \begin{equation*}
-    Z_G = e^{-\beta\Omega(T,V,\mu)} = \Sp{e^{-\beta\hat K}} = 
+    Z_G = e^{-\beta\Omega(T,V,\mu)} = \Tr{e^{-\beta\hat K}} = 
     \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1 | e^{-\beta\hat K} |n_1, \dots, n_i, \dots},
 \end{equation*}
 where $\beta = (1/k_BT)$.
@@ -192,15 +199,38 @@ where $\beta = (1/k_BT)$.
 \end{equation*}
 The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
 \begin{equation*}
-    \langle \hat O \rangle = \Sp{\hat \rho_G \hat O}.
+    \langle \hat O \rangle = \Tr{\hat \rho_G \hat O}.
 \end{equation*}
 
 
 \section{Exercises}
 \begin{enumerate}
+    \item What is the first quantized wavefunction of $\sum\limits_k c_k \hat a_k^{\dagger}\ket 0$, where
+    $\hat a_k^{\dagger}$ is a fermionic creation operator?
+    \item Calculate the first-quantized wavefunction for $\hat a_k^{\dagger}\hat a_l^{\dagger}\ket 0$ for
+    both fermionic and bosonic operators!
+    \item Consider 2 fermionic particles prepared in states
+    \begin{align*}
+        &\Psi_1(x_1) = \sum\limits_k b_k\varphi_k(x_1)\\
+        &\Psi_2(x_2) = \sum\limits_l c_l\varphi_l(x_2).
+    \end{align*}
+    The state of the joint system in first quantization is 
+    \begin{equation*}
+        \Phi(x_1, x_2) = \frac{1}{\sqrt 2}[\Psi_1(x_1)\Psi_2(x_2) - \Psi_1(x_2)\Psi_2(x_1)]
+    \end{equation*}
+    What is the Fock-space representation of $\Phi(x_1, x_2)$? Verify Your result by converting it back to 
+    first-quantization using the formula!
+    \par \textit{Solution.} 
+    \begin{align*}
+        &\Psi_1(x_1) = \sum\limits_k b_k\varphi_k(x_1) \rightarrow \sum\limits_k b_k \hat a_k^{\dagger}\ket{0} \\
+        &\Psi_2(x_2) = \sum\limits_l c_l\varphi_l(x_2) \rightarrow \sum\limits_l c_l \hat a_k^{\dagger}\ket{0} \\
+        &\Phi(x_1, x_2) \rightarrow \sum\limits_{k,l} [b_k\hat a_k^{\dagger}c_l \hat a_k^{\dagger} - ]
+    \end{align*}
     \item Find the eigenvalues and eigenvectors of $\hat a_k$ and $\hat a_k^{\dagger}$!
     \item $\hat\Psi^{\dagger}(x)\ket 0 = ?$
     \item $[\hat \Psi(x), \hat N] = ?$
+    \item Calculate the first-quantized wavefunction $\Phi(x_1,x_2,x_3)$ for bosonic three-particle system 
+    prepared in state $\ket{2, 0, 1, 0, 0, \cdots}$.
     \item Prove that 
     \begin{align*}
         &[\hat a_j, f(\hat a_j^{\dagger})] = \frac{\partial f(\hat a_j^{\dagger})}{\partial \hat a_j^{\dagger}}\\
@@ -214,10 +244,12 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
     \begin{equation*}
         \frac{\partial f(\hat A)}{\partial A} = \sum\limits_{k=1}^{\infty} \frac{1}{(k-1)!}f^{(k)}(0)\hat A^{k-1}
     \end{equation*}
-    \item Calculate $\Sp {\hat N}$ for bosonic particles!
+    \item Consider a fermionic system. What is the Fock-space representation of $\hat S_z$ and what is the meaning
+    of this operator? What are the eigenstates of $\hat S_z$?
+    \item Calculate $\Tr {\hat N}$ for bosonic particles!
     \par\textit{Solution}.
     \begin{align*}
-        \Sp{\hat N} &= \sum\limits_{\{n_i\}}\braket{\dots,n_i,\dots,n_1 | \hat N |n_1, \dots, n_i, \dots} \\
+        \Tr{\hat N} &= \sum\limits_{\{n_i\}}\braket{\dots,n_i,\dots,n_1 | \hat N |n_1, \dots, n_i, \dots} \\
         & = \sum\limits_{\{n_i\}}\Braket{\dots,n_i,\dots,n_1 | \int\dd x \hat\Psi^{\dagger}(x)\hat\Psi(x) |n_1, \dots, n_i, \dots} \\
         & = \sum\limits_{\{n_i\}}\Braket{\dots,n_i,\dots,n_1 | \int\dd x \sum\limits_{k,l}\varphi^*_k(x)\varphi_l(x)
         \hat a_k^{\dagger}\hat a_l |n_1, \dots, n_i, \dots} \\
@@ -231,11 +263,19 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
         & = \sum\limits_{\{n_i\}}\sum\limits_{k} n_k \underbrace{\int\dd x \varphi^*_k(x)\varphi_k(x)}_{=1}\\
         & = \sum\limits_{\{n_i\}}\sum\limits_{k} n_k
     \end{align*}
-    \item Calculate $\Sp {\hat H_0}$, where
+    \item Calculate $\Tr {\hat H_0}$, where
     \begin{equation*}
-        \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[-\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
+        \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[ -\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
     \end{equation*}
     \item Calculate $\langle \hat N \rangle$ for bosonic particles!
+    \item Do something
+    \item asdfghjk \begin{equation*}
+        \circled{$!$}, \circled{$\nabla$}
+    \end{equation*}
+
 \end{enumerate}
+
+
+
 
 \end{document}
