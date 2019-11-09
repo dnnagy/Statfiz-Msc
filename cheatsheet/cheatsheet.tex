@@ -50,8 +50,8 @@
 %%%%%%%%%%%%%%%%%%%
 \newcommand{\bb}[1]{\mathbf{#1}}
 \newcommand{\dd}{\mathrm{d}}
-\newcommand{\Tr}[1]{\mathrm{Tr}\left(#1\right)}
-\newcommand{\Sp}[1]{\mathrm{Sp}\left({#1}\right)}
+\newcommand{\Tr}[1]{\mathrm{Tr}\left[#1\right]}
+\newcommand{\Sp}[1]{\mathrm{Sp}\left[{#1}\right]}
 
 % \newtheorem*{tetel*}{Tétel}
 % \newtheorem*{defn*}{Definíció}
@@ -137,6 +137,7 @@ For bosons only:
     \item $\bra 0 \hat a_k^{\dagger} = 0$
     \item $\hat a_k \ket 0 = 0$
 \end{itemize}
+
 \section{Field operators}
 \begin{align*}
     &\hat\Psi^{\dagger}(x) = \sum\limits_{j=1}^{\infty}\varphi^*_j(x)\hat a_j^{\dagger}\\
@@ -171,7 +172,17 @@ The first-quantized wavefunction for this state is
 \end{equation*}
 
 \section{Fock-space operators}
-Single particle operators:
+If $\hat o$ is a single-particle operator in first-quantization, then its second quantized form is 
+\begin{align*}
+    \hat O &= \int\dd x\hat\Psi^{\dagger}(x)\hat o\hat\Psi(x) \\
+    & = \sum\limits_{j,k} \int \dd x \varphi^*_j(x) \hat o \varphi_k(x) \hat a_j^{\dagger}\hat a_k.
+\end{align*} 
+If $\hat o$ is a two-particle operator in first-quantization, then its second-quantized form is 
+\begin{align*}
+    \hat O &= \frac{1}{2} \int\dd x \dd x' \hat\Psi^{\dagger}(x) \hat\Psi^{\dagger}(x') \hat o \hat\Psi(x') \hat\Psi(x) \\
+    & = \frac{1}{2} \sum\limits_{i,j,k,l} \int\dd x \dd x' \varphi^*_i(x)\varphi^*_j(x') \hat o \varphi_k(x')\varphi_l(x)
+    \hat a_i^{\dagger}\hat a_j^{\dagger}\hat a_k\hat a_l.
+\end{align*}
 
 
 \section{Green function method}
@@ -199,7 +210,7 @@ where $\beta = (1/k_BT)$.
 \end{equation*}
 The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
 \begin{equation*}
-    \langle \hat O \rangle = \Tr{\hat \rho_G \hat O}.
+    \langle \hat O \rangle = \Tr{\hat \rho_G \hat O} = \frac{1}{Z_G}\Tr{e^{-\beta \hat K}\hat O}.
 \end{equation*}
 
 
@@ -224,7 +235,8 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
     \begin{align*}
         &\Psi_1(x_1) = \sum\limits_k b_k\varphi_k(x_1) \rightarrow \sum\limits_k b_k \hat a_k^{\dagger}\ket{0} \\
         &\Psi_2(x_2) = \sum\limits_l c_l\varphi_l(x_2) \rightarrow \sum\limits_l c_l \hat a_k^{\dagger}\ket{0} \\
-        &\Phi(x_1, x_2) \rightarrow \sum\limits_{k,l} b_kc_l \frac{1}{\sqrt 2} [\varphi_k(x_1)\varphi_l(x_2) - \varphi_k(x_2)\varphi_l(x_1)]
+        &\Phi(x_1, x_2) = \sum\limits_{k,l} b_kc_l \frac{1}{\sqrt 2} [\varphi_k(x_1)\varphi_l(x_2) - \varphi_k(x_2)\varphi_l(x_1)]
+        \rightarrow \sum\limits_{k,l} b_kc_l \hat a_k^{\dagger}a_l^{\dagger} \ket 0 
     \end{align*}
     \item Find the eigenvalues and eigenvectors of $\hat a_k$ and $\hat a_k^{\dagger}$!
     \item $\hat\Psi^{\dagger}(x)\ket 0 = ?$
@@ -267,6 +279,12 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
     \begin{equation*}
         \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[ -\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
     \end{equation*}
+    \item Calculate $\langle \hat n_k \rangle$ for free non-interacting bosons!
+    \par \textit{Solution.}
+    \begin{align*}
+        \langle \hat n_k \rangle & = \langle \hat a_k^{\dagger}\hat a_k \rangle = \frac{1}{Z_G}\Tr{e^{-\beta \hat K}\hat a_k^{\dagger}\hat a_k} \\
+        & = \frac{1}{Z_G} \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1|e^{-\beta \hat K}\hat a_k^{\dagger}\hat a_k|n_1,\dots, n_i, \dots}
+    \end{align*}
     \item Calculate $\langle \hat N \rangle$ for bosonic particles!
     \item Do something
     \item asdfghjk \begin{equation*}
