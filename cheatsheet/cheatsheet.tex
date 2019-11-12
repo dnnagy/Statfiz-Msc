@@ -310,6 +310,10 @@ Properties:
     \end{equation*}
     \item Calculate $\langle \hat n_k \rangle$ for free non-interacting particles!
     \par \textit{Solution.}
+    For non-interacting particles,
+    \begin{equation*}
+        \hat K = \hat K_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[ -\frac{\hbar^2}{2M}\nabla^2 + U(x) - \mu \right]\hat\Psi(x)
+    \end{equation*}
     \begin{equation*}
         \langle \hat n_k \rangle = \langle \hat a_k^{\dagger}\hat a_k \rangle
         = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k} 
@@ -347,17 +351,22 @@ Properties:
         - e^{\frac{\hat K\tau}{\hbar}}(\delta_{kl}\hat a_l - \hat a_l^{\dagger}\hat a_l\hat a_k)e^{-\frac{\hat K\tau}{\hbar}}\\
         &= - e^{\frac{\hat K\tau}{\hbar}}\delta_{kl}\hat a_le^{-\frac{\hat K\tau}{\hbar}}.
     \end{align*}
-    
+    Using this result, we get 
+    \begin{align*}
+        &\frac{\dd}{\dd\tau}\hat a_k(\tau) = -\frac{1}{\hbar}\sum\limits_{l}(e_l - \mu)\hat a_k(\tau)\\
+        &\implies \hat a_k(\tau) = \hat a_k e^{-\frac{(e_l - \mu)}{\hbar}\tau}
+    \end{align*}
     \begin{align*}
         \langle \hat n_k \rangle &= \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}
         = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} \hat a_k(\beta\hbar)\hat a_k^{\dagger}}\\
         & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} (1\pm \hat a_k^{\dagger}\hat a_k(\beta\hbar))}\\
-        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}} \pm \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k(\beta\hbar)}
-        \\
-        & = 
+        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}} \pm \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k(\beta\hbar)}\\
+        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}} \pm \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_ke^{-\beta(e_l - \mu)}}\\
+        & = 1 \pm \langle \hat n_k \rangle e^{-\beta(e_l - \mu)}
     \end{align*}
-    
-    
+    \begin{equation*}
+        \implies \langle \hat n_k \rangle = \frac{1}{1 \mp e^{-\beta(e_l - \mu)}}.
+    \end{equation*}
     
     \item Calculate $\langle \hat N \rangle$ for bosonic particles!
     \item Do something
