@@ -213,6 +213,35 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
     \langle \hat O \rangle = \Tr{\hat \rho_G \hat O} = \frac{1}{Z_G}\Tr{e^{-\beta \hat K}\hat O}.
 \end{equation*}
 
+\subsection{Imaginary time and $K$-picture}
+The imaginary time is defined to be
+\begin{equation*}
+    \tau = -it.
+\end{equation*}
+The imaginary time dependendent form of an operator is defined as 
+\begin{align*}
+    &\hat A_K(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat Ae^{-\frac{\hat K\tau}{\hbar}} \\
+\end{align*}
+This is also called the $K$-picture of the operator. It can be shown that $\hat K(\tau) = \hat K$:
+\begin{align*}
+    & \left[f(\hat K), \hat K \right] = 0 \implies \left[e^{\frac{\hat K\tau}{\hbar}}, \hat K\right] = 0
+\end{align*}
+Using the Baker-Campbell-Hausdorff formula:
+\begin{equation*}
+    \hat K(\tau) = Ke^{\frac{\hat K\tau}{\hbar}}\hat K e^{-\frac{\hat K\tau}{\hbar}} = \hat K + [e^{\frac{\hat K\tau}{\hbar}}, \hat K] 
+    + \frac{1}{2!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat a_k]]
+    + \frac{1}{3!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat K]]]
+    + \cdots = \hat K
+\end{equation*}
+
+Properties:
+\begin{itemize}
+    \item $\displaystyle{\frac{\dd}{\dd\tau} \hat A_K(\tau) = \frac{1}{\hbar}[\hat K, \hat A_K(\tau)] }$
+    \item If $\hat C = \hat A\hat B$, then $\hat C(\tau) = \hat A(\tau)\hat B(\tau)$
+    \item $\displaystyle{\hat \Psi(x, \tau) = e^{\frac{\hat K\tau}{\hbar}}\hat\Psi(x)e^{-\frac{\hat K\tau}{\hbar}} = \sum\limits_k \varphi_k(x)\hat a_k(\tau)}$
+    \item $\displaystyle{\hat \Psi^{\dagger}(x, \tau) = e^{\frac{\hat K\tau}{\hbar}}\hat\Psi^{\dagger}(x)e^{-\frac{\hat K\tau}{\hbar}} = \sum\limits_k \varphi_k(x)\hat a_k^{\dagger}(\tau)}$
+    \item $[\hat A(\tau), \hat B(\tau)] = e^{\frac{\hat K\tau}{\hbar}}[\hat A, \hat B]e^{-\frac{\hat K\tau}{\hbar}}$
+\end{itemize}
 
 \section{Exercises}
 \begin{enumerate}
@@ -288,35 +317,37 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
         = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}.
     \end{equation*}
     We can use the imaginary time-dependence of operators ($K$-picture):
-    \begin{align*}
-        &\hat O_K(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat Oe^{-\frac{\hat K\tau}{\hbar}} \\
-        &\frac{\dd}{\dd\tau} \hat O_K(\tau) = \frac{1}{\hbar}[\hat K, \hat O_K(\tau)]
-    \end{align*}
-    we also know, that
-    \begin{align*}
-        & \left[f(\hat K), \hat K \right] = 0 \implies \left[e^{\frac{\hat K\tau}{\hbar}}, \hat K\right]
-    \end{align*}
-    Using the Baker-Campbell-Hausdorff formula:
-    \begin{equation*}
-        \hat K(\tau) = Ke^{\frac{\hat K\tau}{\hbar}}\hat K e^{-\frac{\hat K\tau}{\hbar}} = \hat K + [e^{\frac{\hat K\tau}{\hbar}}, \hat K] 
-        + \frac{1}{2!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat a_k]]
-        + \frac{1}{3!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat K]]]
-        + \cdots = \hat K
-    \end{equation*}
-
-    \begin{align*}
-        \hat a_k(\tau) &= e^{\frac{\hat K\tau}{\hbar}}\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
-        \Longrightarrow
-        \hat a_k(\beta\hbar) = e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\\
-        \frac{\dd}{\dd\tau}\hat a_k(\tau) &= \frac{1}{\hbar}[\hat K_0, \hat a_k(\tau)]\\
-        & = \frac{1}{\hbar}\left[\sum\limits_{l,m}\int\dd x \varphi^*_l(x) \left(-\frac{\hbar^2}{2M}\nabla^2 + U(x) - \mu\right)
-        \varphi_m(x)\hat a_l^{\dagger}\hat a_m, \hat a_k(\tau) \right] \\
-        & = \frac{1}{\hbar}\left[\sum\limits_{l}a_l^{\dagger}\hat a_l (e_l - \mu), \hat a_k(\tau)\right]
-        = \frac{1}{\hbar}\sum\limits_{l}(e_l - \mu) \left[a_l^{\dagger}\hat a_l, \hat a_k(\tau)\right].
-    \end{align*}
-    Using the identity $K_0 = K_0(\tau)$:
     
 
+    \begin{equation*}
+        \hat a_k(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        \Longrightarrow
+        \hat a_k(\beta\hbar) = e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}
+    \end{equation*}
+    \begin{equation*}
+        \frac{\dd}{\dd\tau}\hat a_k(\tau) = \frac{1}{\hbar}[\hat K_0, \hat a_k(\tau)]
+    \end{equation*}
+    Using the identity $K_0 = K_0(\tau)$:
+    \begin{align*}
+        \frac{\dd}{\dd\tau}\hat a_k(\tau) &= \frac{1}{\hbar}[\hat K_0(\tau), \hat a_k(\tau)]\\
+        & = \frac{1}{\hbar}\left[\sum\limits_{l,m}\int\dd x \varphi^*_l(x) \left(-\frac{\hbar^2}{2M}\nabla^2 + U(x) - \mu\right)
+        \varphi_m(x)\hat a_l^{\dagger}(\tau)\hat a_m(\tau), \hat a_k(\tau) \right] \\
+        & = \frac{1}{\hbar}\left[\sum\limits_{l}a_l^{\dagger}(\tau)\hat a_l(\tau) (e_l - \mu), \hat a_k(\tau)\right]
+        = \frac{1}{\hbar}\sum\limits_{l}(e_l - \mu) \left[a_l^{\dagger}(\tau)\hat a_l(\tau), \hat a_k(\tau)\right].
+    \end{align*}
+    
+    \begin{align*}
+        [\hat a_l^{\dagger}(\tau)\hat a_l(\tau), \hat a_k(\tau)]
+        &= \hat a_l^{\dagger}(\tau)\hat a_l(\tau)\hat a_k(\tau) - \hat a_k(\tau)\hat a_l^{\dagger}(\tau)\hat a_l(\tau)\\
+        &= e^{\frac{\hat K\tau}{\hbar}} \hat a_l^{\dagger}\hat a_l\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        - e^{\frac{\hat K\tau}{\hbar}}\hat a_k\hat a_l^{\dagger}\hat a_le^{-\frac{\hat K\tau}{\hbar}}\\
+        &= e^{\frac{\hat K\tau}{\hbar}} \hat a_l^{\dagger}\hat a_l\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        - e^{\frac{\hat K\tau}{\hbar}}(\delta_{kl} - \hat a_l^{\dagger}\hat a_k)\hat a_le^{-\frac{\hat K\tau}{\hbar}}\\
+        &= e^{\frac{\hat K\tau}{\hbar}} \hat a_l^{\dagger}\hat a_l\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        - e^{\frac{\hat K\tau}{\hbar}}(\delta_{kl}\hat a_l - \hat a_l^{\dagger}\hat a_l\hat a_k)e^{-\frac{\hat K\tau}{\hbar}}\\
+        &= - e^{\frac{\hat K\tau}{\hbar}}\delta_{kl}\hat a_le^{-\frac{\hat K\tau}{\hbar}}.
+    \end{align*}
+    
     \begin{align*}
         \langle \hat n_k \rangle &= \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}
         = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} \hat a_k(\beta\hbar)\hat a_k^{\dagger}}\\
