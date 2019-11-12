@@ -292,6 +292,18 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
         &\hat O_K(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat Oe^{-\frac{\hat K\tau}{\hbar}} \\
         &\frac{\dd}{\dd\tau} \hat O_K(\tau) = \frac{1}{\hbar}[\hat K, \hat O_K(\tau)]
     \end{align*}
+    we also know, that
+    \begin{align*}
+        & \left[f(\hat K), \hat K \right] = 0 \implies \left[e^{\frac{\hat K\tau}{\hbar}}, \hat K\right]
+    \end{align*}
+    Using the Baker-Campbell-Hausdorff formula:
+    \begin{equation*}
+        \hat K(\tau) = Ke^{\frac{\hat K\tau}{\hbar}}\hat K e^{-\frac{\hat K\tau}{\hbar}} = \hat K + [e^{\frac{\hat K\tau}{\hbar}}, \hat K] 
+        + \frac{1}{2!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat a_k]]
+        + \frac{1}{3!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat K]]]
+        + \cdots = \hat K
+    \end{equation*}
+
     \begin{align*}
         \hat a_k(\tau) &= e^{\frac{\hat K\tau}{\hbar}}\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
         \Longrightarrow
@@ -300,24 +312,21 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
         & = \frac{1}{\hbar}\left[\sum\limits_{l,m}\int\dd x \varphi^*_l(x) \left(-\frac{\hbar^2}{2M}\nabla^2 + U(x) - \mu\right)
         \varphi_m(x)\hat a_l^{\dagger}\hat a_m, \hat a_k(\tau) \right] \\
         & = \frac{1}{\hbar}\left[\sum\limits_{l}a_l^{\dagger}\hat a_l (e_l - \mu), \hat a_k(\tau)\right]
+        = \frac{1}{\hbar}\sum\limits_{l}(e_l - \mu) \left[a_l^{\dagger}\hat a_l, \hat a_k(\tau)\right].
     \end{align*}
-        
+    Using the identity $K_0 = K_0(\tau)$:
+    
 
-    therefore,
     \begin{align*}
         \langle \hat n_k \rangle &= \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}
         = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} \hat a_k(\beta\hbar)\hat a_k^{\dagger}}\\
         & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} (1\pm \hat a_k^{\dagger}\hat a_k(\beta\hbar))}\\
-        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}} \pm \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k(\beta\hbar)}\\
+        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}} \pm \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k(\beta\hbar)}
+        \\
         & = 
     \end{align*}
-    Using the Baker-Campbell-Hausdorff formula:
-    \begin{equation*}
-        e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0} = \hat a_k + [e^{\beta \hat K_0}, \hat a_k] 
-        + \frac{1}{2!}[e^{\beta \hat K_0}, [e^{\beta \hat K_0},\hat a_k]]
-        + \frac{1}{3!}[e^{\beta \hat K_0}, [e^{\beta \hat K_0}, [e^{\beta \hat K_0},\hat a_k]]]
-        + \cdots
-    \end{equation*}
+    
+    
     
     \item Calculate $\langle \hat N \rangle$ for bosonic particles!
     \item Do something
