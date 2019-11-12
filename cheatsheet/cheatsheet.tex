@@ -279,16 +279,50 @@ The average of operator $\hat O$ \textit{over the grand canonical ensemble} is
     \begin{equation*}
         \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[ -\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
     \end{equation*}
-    \item Calculate $\langle \hat n_k \rangle$ for free non-interacting bosons!
+    \item Calculate $\langle \hat n_k \rangle$ for free non-interacting particles!
     \par \textit{Solution.}
+    \begin{equation*}
+        \langle \hat n_k \rangle = \langle \hat a_k^{\dagger}\hat a_k \rangle
+        = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k} 
+        = \frac{1}{Z_G}\Tr{\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}
+        = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}.
+    \end{equation*}
+    We can use the imaginary time-dependence of operators ($K$-picture):
     \begin{align*}
-        \langle \hat n_k \rangle & = \langle \hat a_k^{\dagger}\hat a_k \rangle = \frac{1}{Z_G}\Tr{e^{-\beta \hat K}\hat a_k^{\dagger}\hat a_k} \\
-        & = \frac{1}{Z_G} \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1|e^{-\beta \hat K}\hat a_k^{\dagger}\hat a_k|n_1,\dots, n_i, \dots}
+        &\hat O_K(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat Oe^{-\frac{\hat K\tau}{\hbar}} \\
+        &\frac{\dd}{\dd\tau} \hat O_K(\tau) = \frac{1}{\hbar}[\hat K, \hat O_K(\tau)]
     \end{align*}
+    \begin{align*}
+        \hat a_k(\tau) &= e^{\frac{\hat K\tau}{\hbar}}\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        \Longrightarrow
+        \hat a_k(\beta\hbar) = e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\\
+        \frac{\dd}{\dd\tau}\hat a_k(\tau) &= \frac{1}{\hbar}[\hat K_0, \hat a_k(\tau)]\\
+        & = \frac{1}{\hbar}\left[\sum\limits_{l,m}\int\dd x \varphi^*_l(x) \left(-\frac{\hbar^2}{2M}\nabla^2 + U(x) - \mu\right)
+        \varphi_m(x)\hat a_l^{\dagger}\hat a_m, \hat a_k(\tau) \right] \\
+        & = \frac{1}{\hbar}\left[\sum\limits_{l}a_l^{\dagger}\hat a_l (e_l - \mu), \hat a_k(\tau)\right]
+    \end{align*}
+        
+
+    therefore,
+    \begin{align*}
+        \langle \hat n_k \rangle &= \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0}\hat a_k^{\dagger}}
+        = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} \hat a_k(\beta\hbar)\hat a_k^{\dagger}}\\
+        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0} (1\pm \hat a_k^{\dagger}\hat a_k(\beta\hbar))}\\
+        & = \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}} \pm \frac{1}{Z_G}\Tr{e^{-\beta \hat K_0}\hat a_k^{\dagger}\hat a_k(\beta\hbar)}\\
+        & = 
+    \end{align*}
+    Using the Baker-Campbell-Hausdorff formula:
+    \begin{equation*}
+        e^{\beta \hat K_0}\hat a_ke^{-\beta \hat K_0} = \hat a_k + [e^{\beta \hat K_0}, \hat a_k] 
+        + \frac{1}{2!}[e^{\beta \hat K_0}, [e^{\beta \hat K_0},\hat a_k]]
+        + \frac{1}{3!}[e^{\beta \hat K_0}, [e^{\beta \hat K_0}, [e^{\beta \hat K_0},\hat a_k]]]
+        + \cdots
+    \end{equation*}
+    
     \item Calculate $\langle \hat N \rangle$ for bosonic particles!
     \item Do something
     \item asdfghjk \begin{equation*}
-        \circled{$!$}, \circled{$\nabla$}
+        \circled{$!$}, \circled{$\nabla$}, \mathcal G(x, \tau, x', \tau')
     \end{equation*}
 
 \end{enumerate}
