@@ -1,0 +1,125 @@
+\documentclass[11pt, a4paper]{article}
+
+%%%%%%%%%%%%%%%%%
+% Configuration %
+%%%%%%%%%%%%%%%%%
+\usepackage{allrunes}
+\usepackage{amsmath}
+% If magyar is wanted
+% \usepackage[magyar]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fixltx2e}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+% using circled symbols
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1}}}
+
+
+% Here you can configure the layout
+\usepackage{geometry}
+\geometry{top=1cm, bottom=1cm, left=1.25cm,right=1.25cm, includehead, includefoot}
+\setlength{\columnsep}{7mm} % Column separation width
+
+\usepackage{graphicx}
+
+%\usepackage{gensymb}
+\usepackage{float}
+
+% For bra-ket notation
+\usepackage{braket}
+
+% To have a good appendix
+\usepackage[toc,page]{appendix}
+
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries}
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape}
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%
+% Custom commands %
+%%%%%%%%%%%%%%%%%%%
+\newcommand{\bb}[1]{\mathbf{#1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Tr}[1]{\mathrm{Tr}\left[#1\right]}
+\newcommand{\Sp}[1]{\mathrm{Sp}\left[{#1}\right]}
+
+% \newtheorem*{tetel*}{Tétel}
+% \newtheorem*{defn*}{Definíció}
+% \newtheorem*{pld*}{Példa}
+% \newtheorem*{megj*}{Megjegyzés}
+% \newtheorem*{allit*}{Állítás}
+
+% \newtheorem{tetel}{Tétel}
+% \newtheorem{defn}{Definíció}
+% \newtheorem{pld}{Példa}
+% \newtheorem{megj}{Megjegyzés}
+% \newtheorem{allit}{Állítás}
+
+% Hyperref should be generally the last package to load
+% Any configuration that should be done before the end of the preamble:
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}
+
+\title{Statistical physics cheat sheet}
+
+\author{Nagy Dániel}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\begin{enumerate}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 1 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Using the second quantized formalism, show that for noninteracting fermions
+    \begin{equation*}
+        \Omega_0 = -k_BT\sum\limits_i \ln \left(1 + e^{-\beta(\varepsilon_i - \mu)}\right)\,,
+    \end{equation*}
+    where $\varepsilon_i$ denotes the $i$-th one-particle level
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 2 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Using the result for $\Omega_0$, calculate $\Omega_0$ and $N$ as a function of $(T,V,\mu)$
+    for a fermionic homogeneous system (noninteracting fermions in a box with periodic boundary
+    conditions). Express your result with Fermi-Dirac integrals. Give the first three terms of the
+    high temperature expansion for $\Omega_0$ and for $N$.
+    
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 3 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item For noninteracting fermions, one can define a characteristic temperature $T_{\textrm{deg}}$
+    by which the chemical potential is zero:
+    \begin{equation*}
+        \mu(T=T_{\textrm{deg}}) = 0.
+    \end{equation*}
+    By dimensional analysis
+    \begin{equation*}
+        k_BT_{\textrm{deg}} = z \frac{\hbar^2}{2m}\left(\frac{N}{V}\right)^{2/3}\,,
+    \end{equation*}
+    where $z$ is a dimensionless number. Calculate $z$ exactly and numerically.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                            % EXERCISE 4 %
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item Let us suppose that we have $N$ noninteracting, spinless bosons confined in a
+    3 dimensional harmonic oscillator potential
+    \begin{equation*}
+        V(\mathbf{r}) = \frac{m}{2}(\omega_1^2x^2 + \omega_2^2y^2 + \omega_3^2z^2).
+    \end{equation*}
+    Calculate $T_c$, where Bose-Einstein condensation occurs.
+\end{enumerate}
+\end{document}
