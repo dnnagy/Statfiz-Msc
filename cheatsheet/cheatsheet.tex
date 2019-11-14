@@ -103,6 +103,12 @@ Anticommutation relations:
     &\{\hat a_k, \hat a_l^{\dagger}\}  = \hat a_k\hat a_l^{\dagger}+\hat a_l^{\dagger}\hat a_k = \delta_{kl}\\
     &\{\hat a_k, \hat a_l\} = \{ \hat a_k^{\dagger}, \hat a_l^{\dagger} \} = 0
 \end{align*}
+Creating fermionic state from vacuum:
+\begin{align*}
+    &\ket{n_1, \dots, n_k, \dots, n_N} = (\hat a_1^{\dagger})^{n_1} \times (\hat a_2^{\dagger})^{n_2}
+    \times \dots \times (\hat a_N^{\dagger})^{n_N} \ket{0}\,,
+\end{align*}
+where $n_1, n_2, \dots ,n_N \in \{0,1\}$.
 \subsection{Bosonic creation and annihillation operators}
 \begin{align*}
     &\hat a_k^{\dagger} \ket{n_1, \dots, n_k, \dots} = \sqrt{1+n_k}\ket{n_1, \dots, n_k + 1, \dots} \\
@@ -116,12 +122,12 @@ Commutation relations:
     &[\hat a_k, \hat a_l^{\dagger}]  = \hat a_k\hat a_l^{\dagger}+\hat a_l^{\dagger}\hat a_k = \delta_{kl}\\
     &[\hat a_k, \hat a_l] = [ \hat a_k^{\dagger}, \hat a_l^{\dagger} ] = 0
 \end{align*}
-For bosons only:
+Creating bosonic state from vacuum:
 \begin{align*}
-    &\ket{n_1, \dots, n_k, \dots} = \frac{1}{\sqrt{\prod\limits_{i=1}^{\infty}n_i!}}
-    (\hat a_1^{\dagger})^{n_1}\times(\hat a_2^{\dagger})^{n_2}\times\dots\times(\hat a_k^{\dagger})^{n_k}\times
-    \dots\ket{0}.
+    &\ket{n_1, \dots, n_k, \dots, n_N} = \frac{(\hat a_1^{\dagger})^{n_1}}{\sqrt{n_1!}} \times \frac{(\hat a_2^{\dagger})^{n_2}}{\sqrt{n_2!}}
+    \times \dots \times \frac{(\hat a_N^{\dagger})^{n_N}}{\sqrt{n_N!}} \ket{0}\,,
 \end{align*}
+where $n_1, n_2, \dots ,n_N \in \{0,1,\dots\}$.
 \textbf{For both bosons and fermions:}
 \begin{itemize}
     \item $\hat n_k = \hat a_k^{\dagger}\hat a_k $ gives the number of particles in the $k$-th eigenstate:
