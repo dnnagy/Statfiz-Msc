@@ -89,7 +89,28 @@
         \Omega_0 = -k_BT\sum\limits_i \ln \left(1 + e^{-\beta(\varepsilon_i - \mu)}\right)\,,
     \end{equation*}
     where $\varepsilon_i$ denotes the $i$-th one-particle level
-    
+    \par\textit{Solution.}
+    \begin{align*}
+        \Omega_0 &= -k_BT\ln Z_G\\
+        &= -k_BT \ln \Tr{e^{-\beta \hat K_0}}\\
+        &= -k_BT \ln \Tr{\sum\limits_{n=0}^{\infty} \frac{(-\beta)^n}{n!}\hat K_0^n}\\
+        &= -k_BT \ln \left(\sum\limits_{n=0}^{\infty} \frac{(-\beta)^n}{n!}\Tr{\hat K_0^n}\right)
+    \end{align*}
+    The second quantized form of $\hat K_0^n$ is 
+    \begin{align*}
+        \hat K_0^n &= \int \dd x \hat\Psi^{\dagger}(x)\left[-\frac{\hbar^2}{2M}\triangle + U(x)
+        -\mu\right]^n\hat\Psi(x) \\
+        & = \sum\limits_{l,m} \int \dd x  \varphi_k^*(x)\underbrace{\left[-\frac{\hbar^2}{2M}\triangle + U(x)
+        -\mu\right]^n \varphi_m(x)}_{(\varepsilon_m - \mu)^n\varphi_m(x)} \hat a_l^{\dagger}\hat a_m \\
+        & = \sum\limits_{l,m}(\varepsilon_m - \mu)^n\delta_{lm} \hat a_l^{\dagger}\hat a_m \\
+        & = \sum\limits_l (\varepsilon_l-\mu)^n \hat a_l^{\dagger}\hat a_l 
+        = \sum\limits_l (\varepsilon_l-\mu)^n \hat n_l
+    \end{align*}
+    Using this result, 
+    \begin{align*}
+        \Tr{\hat K_0^n} &= \sum\limits_{\{n_i\}} \braket{n_1, \dots, n_i, \dots | \sum\limits_l (\varepsilon_l-\mu)^n \hat n_l | n_1, \dots, n_i, \dots}\\
+        & =
+    \end{align*}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                             % EXERCISE 2 %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -203,7 +203,11 @@ where the sum is over the entire Fock-space, not just the $N$-particle subspace.
     Z_G = e^{-\beta\Omega(T,V,\mu)} = \Tr{e^{-\beta\hat K}} = 
     \sum\limits_{\{n_i\}}\braket{\dots, n_i, \dots, n_1 | e^{-\beta\hat K} |n_1, \dots, n_i, \dots},
 \end{equation*}
-where $\beta = (1/k_BT)$.
+where $\beta = (1/k_BT)$, and 
+\begin{equation*}
+    \Omega(T, V, \mu) = -k_BT\ln Z_G
+\end{equation*}
+is the grand potential.
 \par The grand canonical density matrix is 
 \begin{equation*}
     \hat\rho_G = \frac{e^{-\beta\hat K}}{Z_G}.
@@ -272,6 +276,11 @@ Properties:
     \item $[\hat\Psi(x), \hat N] = ?$
     \item Calculate the first-quantized wavefunction $\Phi(x_1,x_2,x_3)$ for bosonic three-particle system 
     prepared in state $\ket{2, 0, 1, 0, 0, \cdots}$.
+    \item Prove that 
+    \begin{equation*}
+        e^{-\beta\sum\limits_k(\varepsilon_k - \mu)\hat a_k^{\dagger}\hat a_k}\ket{n_1, \dots, n_k, \dots}
+        = e^{-\beta\sum\limits_k(\varepsilon_k - \mu)n_k}\ket{n_1, \dots, n_k, \dots}
+    \end{equation*}
     \item Prove that 
     \begin{align*}
         &[\hat a_j, f(\hat a_j^{\dagger})] = \frac{\partial f(\hat a_j^{\dagger})}{\partial \hat a_j^{\dagger}}\\
