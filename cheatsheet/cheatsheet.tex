@@ -328,11 +328,14 @@ Properties:
     The periodic boundary condition means that the single-particle wavefunctions are the solutions of the 3D particle in a box problem.
     These are:
     \begin{equation*}
-        \braket{\mathbf r | m} = \varphi_m(\mathbf r) = \frac{1}{\sqrt{L^3}}e^{i\mathbf k \mathbf r}.
+        \braket{\mathbf r | m} = \varphi_m(\mathbf r) = \frac{1}{\sqrt{L^3}}e^{i\mathbf k_m \mathbf r},
+        ~\mathbf k_m = 2\pi m \begin{pmatrix}
+            1/L \\ 1/L \\ 1/L
+        \end{pmatrix}.
     \end{equation*}
     The homogeneous non-interacting Hamiltonian is simply the kinetic energy:
     \begin{equation*}
-        \hat H = \sum_{j=1}^N\left[-\frac{\hbar^2}{2M}\triangle_i\right] 
+        \hat H = \sum_{j=1}^N\left[-\frac{\hbar^2}{2M}\triangle_i\right]
     \end{equation*}
     \item Calculate $\langle \hat n_k \rangle$ for free non-interacting particles!
     \par \textit{Solution.}
