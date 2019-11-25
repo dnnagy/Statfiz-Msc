@@ -146,8 +146,8 @@ where $n_1, n_2, \dots ,n_N \in \{0,1,\dots\}$.
 
 \section{Field operators}
 \begin{align*}
-    &\hat\Psi^{\dagger}(x) = \sum\limits_{j=1}^{\infty}\varphi^*_j(x)\hat a_j^{\dagger}\\
-    &\hat\Psi(x) = \sum\limits_{j=1}^{\infty}\varphi_j(x)\hat a_j,
+    &\hat\Psi^{\dagger}(x) = \sum\limits_{j=1}^{\infty} \braket{x|j}^*\hat a_j^{\dagger} = \sum\limits_{j=1}^{\infty}\varphi^*_j(x)\hat a_j^{\dagger}\\
+    &\hat\Psi(x) = \sum\limits_{j=1}^{\infty} \braket{x|j} \hat a_j = \sum\limits_{j=1}^{\infty}\varphi_j(x)\hat a_j,
 \end{align*}
 where $\varphi_j(x) = \braket{x|j}$ is the wavefunction of the $j$-th one-particle eigenstate.
 
@@ -323,6 +323,17 @@ Properties:
     \begin{equation*}
         \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[ -\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
     \end{equation*}
+    \item Calculate the second quantized Hamiltonian for a homogeneous, non-interacting system with periodic boundary conditions!
+    \par \textit{Solution.}
+    The periodic boundary condition means that the single-particle wavefunctions are the solutions of the 3D particle in a box problem.
+    These are:
+    \begin{equation*}
+        \braket{\mathbf r | m} = \varphi_m(\mathbf r) = \frac{1}{\sqrt{L^3}}e^{i\mathbf k \mathbf r}.
+    \end{equation*}
+    The homogeneous non-interacting Hamiltonian is simply the kinetic energy:
+    \begin{equation*}
+        \hat H = \sum_{j=1}^N\left[-\frac{\hbar^2}{2M}\triangle_i\right] 
+    \end{equation*}
     \item Calculate $\langle \hat n_k \rangle$ for free non-interacting particles!
     \par \textit{Solution.}
     For non-interacting particles,
@@ -346,7 +357,7 @@ Properties:
     \begin{equation*}
         \frac{\dd}{\dd\tau}\hat a_k(\tau) = \frac{1}{\hbar}[\hat K_0, \hat a_k(\tau)]
     \end{equation*}
-    Using the identity $K_0 = K_0(\tau)$:
+    Using the identity $\hat K_0 = \hat K_0(\tau)$:
     \begin{align*}
         \frac{\dd}{\dd\tau}\hat a_k(\tau) &= \frac{1}{\hbar}[\hat K_0(\tau), \hat a_k(\tau)]\\
         & = \frac{1}{\hbar}\left[\sum\limits_{l,m}\int\dd x \varphi^*_l(x) \left(-\frac{\hbar^2}{2M}\nabla^2 + U(x) - \mu\right)

@@ -273,10 +273,15 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/jknappen/ec/ecti1095.tfm
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT /Users/nagydaniel/Documents/ELTE/MSc/Statfiz-Msc/cheatsheet/cheatsheet.aux
 INPUT /Users/nagydaniel/Documents/ELTE/MSc/Statfiz-Msc/cheatsheet/cheatsheet.out
 INPUT /Users/nagydaniel/Documents/ELTE/MSc/Statfiz-Msc/cheatsheet/cheatsheet.out
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
