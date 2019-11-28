@@ -128,7 +128,13 @@ Creating bosonic state from vacuum:
     \times \dots \times \frac{(\hat a_N^{\dagger})^{n_N}}{\sqrt{n_N!}} \ket{0}\,,
 \end{align*}
 where $n_1, n_2, \dots ,n_N \in \{0,1,\dots\}$.
-\textbf{For both bosons and fermions:}
+\par\textbf{For both bosons and fermions:}
+\begin{itemize}
+    \item $\braket{0|0} = 1$
+    \item $\bra 0 \hat a_k^{\dagger} = 0$
+    \item $\hat a_k \ket 0 = 0$
+\end{itemize}
+\section{Particle number operators}
 \begin{itemize}
     \item $\hat n_k = \hat a_k^{\dagger}\hat a_k $ gives the number of particles in the $k$-th eigenstate:
     \begin{equation*}
@@ -139,11 +145,7 @@ where $n_1, n_2, \dots ,n_N \in \{0,1,\dots\}$.
         \hat N \ket{n_1, \dots, n_k, \dots} = \sum\limits_{j=1}^{\infty}n_j \ket{n_1, \dots, n_k, \dots}
         = N \ket{n_1, \dots, n_k, \dots}.
     \end{equation*}
-    \item $\braket{0|0} = 1$
-    \item $\bra 0 \hat a_k^{\dagger} = 0$
-    \item $\hat a_k \ket 0 = 0$
 \end{itemize}
-
 \section{Field operators}
 \begin{align*}
     &\hat\Psi^{\dagger}(x) = \sum\limits_{j=1}^{\infty} \braket{x|j}^*\hat a_j^{\dagger} = \sum\limits_{j=1}^{\infty}\varphi^*_j(x)\hat a_j^{\dagger}\\
@@ -232,11 +234,11 @@ The imaginary time dependendent form of an operator is defined as
 \begin{align*}
     &\hat A_K(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat Ae^{-\frac{\hat K\tau}{\hbar}} \\
 \end{align*}
-This is also called the $K$-picture of the operator. It can be shown that $\hat K(\tau) = \hat K$:
+This is also called the $K$-picture of the operator. It can be shown that $\hat K(\tau) = \hat K$. First,
 \begin{align*}
     & \left[f(\hat K), \hat K \right] = 0 \implies \left[e^{\frac{\hat K\tau}{\hbar}}, \hat K\right] = 0
 \end{align*}
-Using the Baker-Campbell-Hausdorff formula:
+then, using the Baker-Campbell-Hausdorff formula:
 \begin{equation*}
     \hat K(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat K e^{-\frac{\hat K\tau}{\hbar}} = \hat K + [e^{\frac{\hat K\tau}{\hbar}}, \hat K] 
     + \frac{1}{2!}[e^{\frac{\hat K\tau}{\hbar}}, [e^{\frac{\hat K\tau}{\hbar}},\hat a_k]]
@@ -244,15 +246,43 @@ Using the Baker-Campbell-Hausdorff formula:
     + \cdots = \hat K
 \end{equation*}
 
-Properties:
+\par Properties:
 \begin{itemize}
-    \item $\displaystyle{\frac{\dd}{\dd\tau} \hat A_K(\tau) = \frac{1}{\hbar}[\hat K, \hat A_K(\tau)] }$
-    \item If $\hat C = \hat A\hat B$, then $\hat C(\tau) = \hat A(\tau)\hat B(\tau)$
+    \item $\displaystyle{\frac{\dd}{\dd\tau} \hat A_K(\tau) = \frac{1}{\hbar}[\hat K, \hat A_K(\tau)] = \frac{1}{\hbar}[\hat K(\tau), \hat A_K(\tau)] }$
+    \item $\displaystyle{e^{\frac{\hat K\tau}{\hbar}}\left[\prod\limits_j \hat A_j\right]}e^{-\frac{\hat K\tau}{\hbar}} = \prod\limits_j \hat A_j(\tau)$ (proof is trivial)
+    \item $\displaystyle{e^{\frac{\hat K\tau}{\hbar}}\left[\sum\limits_j \hat A_j\right]}e^{-\frac{\hat K\tau}{\hbar}} = \sum\limits_j \hat A_j(\tau)$ (proof using the Baker-Campbell-Hausdorff formula)
     \item $\displaystyle{\hat \Psi(x, \tau) = e^{\frac{\hat K\tau}{\hbar}}\hat\Psi(x)e^{-\frac{\hat K\tau}{\hbar}} = \sum\limits_k \varphi_k(x)\hat a_k(\tau)}$
     \item $\displaystyle{\hat \Psi^{\dagger}(x, \tau) = e^{\frac{\hat K\tau}{\hbar}}\hat\Psi^{\dagger}(x)e^{-\frac{\hat K\tau}{\hbar}} = \sum\limits_k \varphi_k(x)\hat a_k^{\dagger}(\tau)}$
     \item $[\hat A(\tau), \hat B(\tau)] = e^{\frac{\hat K\tau}{\hbar}}[\hat A, \hat B]e^{-\frac{\hat K\tau}{\hbar}}$
 \end{itemize}
 
+\subsection{Definition of the Green function}
+\begin{align*}
+    \mathcal G(x, \tau; x', \tau') & = -\left\langle T [\hat \Psi (x, \tau)\hat\Psi^{\dagger}(x', \tau')]\right\rangle \\
+    & = - \Tr{\hat\rho_G T [\hat \Psi (x, \tau)\hat\Psi^{\dagger}(x', \tau')]},
+\end{align*}
+where $T$ is the time-ordering operator:
+\begin{equation*}
+    T[\hat \Psi (x, \tau)\hat\Psi^{\dagger}(x', \tau')] =
+    \begin{cases}
+        \hat \Psi (x, \tau)\hat\Psi^{\dagger}(x', \tau'), ~\textrm{if}~\tau>\tau' \\
+        \hat\Psi^{\dagger}(x', \tau')\hat \Psi (x, \tau), ~\textrm{if}~\tau\leq\tau'
+    \end{cases}
+\end{equation*}
+\begin{align*}
+    &\mathcal G(x, x'; \tau) = \frac{1}{\beta\hbar}\sum\limits_{n=-\infty}^{\infty} \mathcal G(x, x'; i\omega_n)e^{-i\omega_n\tau} \\
+    &\mathcal G(x, x'; i\omega_n) = \int\limits_{0}^{\beta\hbar}\mathcal G(x, x'; \tau)e^{i\omega_n\tau},
+\end{align*}
+where $\omega_n$ are called Matsubara-frequencies:
+\begin{equation*}
+    \omega_n = \begin{cases}
+        \frac{2n\pi}{\beta\hbar}, ~ \textrm{for bosons}\\
+        \frac{(2n+1)\pi}{\beta\hbar}, ~ \textrm{for fermions}
+    \end{cases}
+\end{equation*}
+
+
+\newpage
 \section{Exercises}
 \begin{enumerate}
     \item What is the first quantized wavefunction of $\sum\limits_k c_k \hat a_k^{\dagger}\ket 0$, where
@@ -300,6 +330,7 @@ Properties:
     \begin{equation*}
         \frac{\partial f(\hat A)}{\partial A} = \sum\limits_{k=1}^{\infty} \frac{1}{(k-1)!}f^{(k)}(0)\hat A^{k-1}
     \end{equation*}
+    \item Prove that if $\hat B = e^{\hat A}$, then $\hat B(\tau) = e^{\hat A(\tau)}$!
     \item Consider a fermionic system. What is the Fock-space representation of $\hat S_z$ and what is the meaning
     of this operator? What are the eigenstates of $\hat S_z$?
     \item Calculate $\Tr {\hat N}$ for bosonic particles!
@@ -319,10 +350,52 @@ Properties:
         & = \sum\limits_{\{n_i\}}\sum\limits_{k} n_k \underbrace{\int\dd x \varphi^*_k(x)\varphi_k(x)}_{=1}\\
         & = \sum\limits_{\{n_i\}}\sum\limits_{k} n_k
     \end{align*}
-    \item Calculate $\Tr {\hat H_0}$, where
+    \item Consider a system, for which the second-quantized Hamiltonian is $\displaystyle{\hat H = \sum\limits_j \varepsilon_j \hat a_j^{\dagger}\hat a_j}$.
+    Calculate $\hat a_k(\tau)$!
+    \subitem \textit{Solution 1}
+    \par By definition,
     \begin{equation*}
-        \hat H_0 = \int\dd x \hat\Psi^{\dagger}(x)\left[ -\frac{\hbar^2}{2M}\nabla^2 + U(x) \right]\hat\Psi(x)
+        \hat a_k(\tau) = e^{\frac{\hat K\tau}{\hbar}}\hat a_k e^{-\frac{\hat K\tau}{\hbar}}.
     \end{equation*}
+    where $\displaystyle{\hat K = \hat H - \mu\hat N = \sum\limits_j(\varepsilon_j-\mu)\hat a_j^{\dagger}\hat a_j}$.
+    Applying the Baker-Campbell-Hausdorff formula, 
+    \begin{equation*}
+        \hat a_k(\tau) = \hat a_k + \left[e^{\frac{\hat K\tau}{\hbar}},\hat a_k\right]
+        + \frac{1}{2!} \left[ e^{\frac{\hat K\tau}{\hbar}}, \left[e^{\frac{\hat K\tau}{\hbar}},\hat a_k\right]\right] +
+        \frac{1}{3!} \left[ e^{\frac{\hat K\tau}{\hbar}}, \left[ e^{\frac{\hat K\tau}{\hbar}}, \left[e^{\frac{\hat K\tau}{\hbar}},\hat a_k\right]\right] \right] + \dots
+    \end{equation*}
+    Substituting 
+    \begin{equation*}
+        e^{\frac{\hat K\tau}{\hbar}} = \sum\limits_l \frac{1}{l!}\left(\frac{\tau}{\hbar}\right)^l\hat K^l
+    \end{equation*}
+    \begin{align*}
+        \hat a_k(\tau) &= \hat a_k + \left[\sum\limits_l \frac{1}{l!}\left(\frac{\tau}{\hbar}\right)^l\hat K^l, \hat a_k\right]
+        + \frac{1}{2!} \left[\sum\limits_l \frac{1}{l!}\left(\frac{\tau}{\hbar}\right)^l\hat K^l, \left[\sum\limits_n \frac{1}{n!}\left(\frac{\tau}{\hbar}\right)^n\hat K^n,\hat a_k\right]\right] + \dots
+        \\
+        & =  \hat a_k + \sum\limits_l \frac{1}{l!}\left(\frac{\tau}{\hbar}\right)^l \left[\hat K^l, \hat a_k\right]
+        + \frac{1}{2!} \sum\limits_l\sum\limits_n \frac{1}{l!} \frac{1}{n!} \left(\frac{\tau}{\hbar}\right)^{l+n} \left[\hat K^l, \left[\hat K^n,\hat a_k\right]\right] + \dots
+        \\ 
+        & = \hat a_k + \sum\limits_l \frac{1}{l!} \left(\frac{\tau}{\hbar}\right)^l \left[ \left(\sum\limits_j(\varepsilon_j-\mu)\hat a_j^{\dagger}\hat a_j\right)^l, \hat a_k \right] + \dots
+    \end{align*}
+    \subitem \textit{Solution 2}
+    \begin{align*}
+        \frac{\dd}{\dd\tau}\hat a_k(\tau) &= \frac{1}{\hbar}[\hat K(\tau), \hat a_k(\tau)]\\
+        &= \frac{1}{\hbar}\left[
+            \sum\limits_j(\varepsilon_j-\mu)\hat a_j^{\dagger}(\tau)\hat a_j(\tau), \hat a_k(\tau)
+            \right]\\
+        &= \frac{1}{\hbar} \sum\limits_j (\varepsilon_j-\mu)\left[\hat a_j^{\dagger}(\tau)\hat a_j(\tau), \hat a_k(\tau)\right]\\
+        &= \frac{1}{\hbar} \sum\limits_j (\varepsilon_j-\mu)\left( \hat a_j^{\dagger}(\tau)\hat a_j(\tau)\hat a_k(\tau) - \hat a_k(\tau)\hat a_j^{\dagger}(\tau)\hat a_j(\tau) \right)\\
+        &= \frac{1}{\hbar} \sum\limits_j (\varepsilon_j-\mu)\left( e^{\frac{\hat K\tau}{\hbar}} \hat a_j^{\dagger}\hat a_j\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        - e^{\frac{\hat K\tau}{\hbar}}\hat a_k\hat a_j^{\dagger}\hat a_je^{-\frac{\hat K\tau}{\hbar}} \right)\\
+        &= \frac{1}{\hbar} \sum\limits_j (\varepsilon_j-\mu)\left( e^{\frac{\hat K\tau}{\hbar}} \hat a_j^{\dagger}\hat a_j\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        - e^{\frac{\hat K\tau}{\hbar}}(\delta_{kj} - \hat a_j^{\dagger}\hat a_k)\hat a_je^{-\frac{\hat K\tau}{\hbar}} \right)\\
+        &= \frac{1}{\hbar} \sum\limits_j (\varepsilon_j-\mu)\left( e^{\frac{\hat K\tau}{\hbar}} \hat a_j^{\dagger}\hat a_j\hat a_k e^{-\frac{\hat K\tau}{\hbar}}
+        - e^{\frac{\hat K\tau}{\hbar}}(\delta_{kj}\hat a_j - \hat a_j^{\dagger}\hat a_j\hat a_k)e^{-\frac{\hat K\tau}{\hbar}} \right)\\
+        &= \frac{1}{\hbar} \sum\limits_j (\varepsilon_j-\mu)\left( - e^{\frac{\hat K\tau}{\hbar}}\delta_{kj}\hat a_je^{-\frac{\hat K\tau}{\hbar}} \right)\\
+        &= -\frac{1}{\hbar} (\varepsilon_k - \mu)\hat a_k(\tau)\\
+        \implies & \hat a_k(\tau) = e^{-\frac{\tau}{\hbar} (\varepsilon_k - \mu)}\hat a_k
+    \end{align*}
+    
     \item Calculate the second quantized Hamiltonian for a homogeneous, non-interacting system with periodic boundary conditions!
     \par \textit{Solution.}
     The periodic boundary condition means that the single-particle wavefunctions are the solutions of the 3D particle in a box problem.
@@ -344,7 +417,7 @@ Properties:
         & = \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r) \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M}l^2\varphi_l(\mathbf r)\hat a_k^{\dagger}\hat a_l\\
         & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r)l^2\varphi_l(\mathbf r)\hat a_k^{\dagger}\hat a_l\\
         & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k,l} \delta_{kl}l^2 \hat a_k^{\dagger}\hat a_l\\
-        & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k} \hat a_k^{\dagger}\hat a_k
+        & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k} k^2 \hat a_k^{\dagger}\hat a_k
     \end{align*}
     \item Calculate $\langle \hat n_k \rangle$ for free non-interacting particles!
     \par \textit{Solution.}

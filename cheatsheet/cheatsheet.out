@@ -2,9 +2,11 @@
 \BOOKMARK [1][-]{section.2}{Creation and annihillation operators}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Fermionic creation and annihillation operators}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Bosonic creation and annihillation operators}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Field operators}{}% 5
-\BOOKMARK [1][-]{section.4}{Fock-space operators}{}% 6
-\BOOKMARK [1][-]{section.5}{Green function method}{}% 7
-\BOOKMARK [2][-]{subsection.5.1}{Grand canonical ensemble}{section.5}% 8
-\BOOKMARK [2][-]{subsection.5.2}{Imaginary time and K-picture}{section.5}% 9
-\BOOKMARK [1][-]{section.6}{Exercises}{}% 10
+\BOOKMARK [1][-]{section.3}{Particle number operators}{}% 5
+\BOOKMARK [1][-]{section.4}{Field operators}{}% 6
+\BOOKMARK [1][-]{section.5}{Fock-space operators}{}% 7
+\BOOKMARK [1][-]{section.6}{Green function method}{}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Grand canonical ensemble}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{Imaginary time and K-picture}{section.6}% 10
+\BOOKMARK [2][-]{subsection.6.3}{Definition of the Green function}{section.6}% 11
+\BOOKMARK [1][-]{section.7}{Exercises}{}% 12
