@@ -328,20 +328,23 @@ Properties:
     The periodic boundary condition means that the single-particle wavefunctions are the solutions of the 3D particle in a box problem.
     These are:
     \begin{equation*}
-        \braket{\mathbf r | m} = \varphi_m(\mathbf r) = \frac{1}{\sqrt{L^3}}e^{i\mathbf k_m \mathbf r},
-        ~\mathbf k_m = 2\pi m \begin{pmatrix}
-            1/L \\ 1/L \\ 1/L
+        \braket{\mathbf r | n} = \varphi_n(\mathbf r) = \frac{1}{\sqrt{L^3}}e^{i\mathbf k_n \mathbf r},
+        ~\mathbf k_n = \frac{2\pi n}{L} \begin{pmatrix}
+            1 \\ 1 \\ 1
         \end{pmatrix}.
     \end{equation*}
     The homogeneous non-interacting Hamiltonian is simply the kinetic energy:
     \begin{equation*}
-        \hat H = \sum_{j=1}^N\left[-\frac{\hbar^2}{2M}\triangle_i\right]
-        \implies \hat H \varphi_m(\mathbf r) = 3\frac{\hbar^2}{2M}\frac{4\pi^2 m^2}{L^2}\varphi_m(\mathbf r).
+        \hat H = \sum_{j=1}^N\left[-\frac{\hbar^2}{2M}\triangle_j\right]
+        \implies \hat H \varphi_n(\mathbf r_l) = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M}n^2\varphi_n(\mathbf r_l).
     \end{equation*}
     The second quantized Hamiltonian is
     \begin{align*}
-        \hat H &= \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r)\hat H\varphi_l(\mathbf r)\hat a_k^{\dagger}\hat a_l
-        & = \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r) \sum_{j=1}^N \delta_{jl} 3\frac{\hbar^2}{2M}...
+        \hat H &= \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r)\hat H\varphi_l(\mathbf r)\hat a_k^{\dagger}\hat a_l\\
+        & = \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r) \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M}l^2\varphi_l(\mathbf r)\hat a_k^{\dagger}\hat a_l\\
+        & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k,l}\int \dd^3 r \varphi^*_k(\mathbf r)l^2\varphi_l(\mathbf r)\hat a_k^{\dagger}\hat a_l\\
+        & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k,l} \delta_{kl}l^2 \hat a_k^{\dagger}\hat a_l\\
+        & = \frac{3}{L^2}\frac{4\pi^2\hbar^2}{2M} \sum\limits_{k} \hat a_k^{\dagger}\hat a_k
     \end{align*}
     \item Calculate $\langle \hat n_k \rangle$ for free non-interacting particles!
     \par \textit{Solution.}
