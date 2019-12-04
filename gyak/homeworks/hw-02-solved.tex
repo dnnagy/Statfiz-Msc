@@ -86,7 +86,7 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \item Using the second quantized formalism, show that for noninteracting fermions
     \begin{equation*}
-        \Omega_0 = -k_BT\sum\limits_i \ln \left(1 + e^{-\beta(\varepsilon_i - \mu)}\right)\,,
+        \Omega_0 = -k_BT\sum\limits_i \ln \left[1 + e^{-\beta(\varepsilon_i - \mu)}\right]\,,
     \end{equation*}
     where $\varepsilon_i$ denotes the $i$-th one-particle level
     \par\textit{Solution.}
@@ -104,10 +104,21 @@
     \begin{align*}
         \Omega_0 &= -k_BT\ln Z_G\\
         &= -k_BT \ln \Tr{e^{-\beta \hat K_0}}\\
-        &= -k_BT \ln \sum\limits_{\{n_i\}}\Braket{n_1, \dots, n_i, \dots | e^{-\beta \hat K_0} |n_1, \dots, n_i, \dots }\\
-        &= -k_BT \ln \sum\limits_{\{n_i\}}\Braket{n_1, \dots, n_i, \dots | e^{-\beta (\hat H_0-\mu \hat N)} |n_1, \dots, n_i, \dots }\\
+        &= -k_BT \ln \Tr{e^{-\beta (\hat H_0 - \mu\hat N)}}\\
+        &= -k_BT \ln \Tr{e^{-\beta \sum\limits_l(\varepsilon_l - \mu)\hat a_l^{\dagger}\hat a_l}}\\
         &= -k_BT \ln \sum\limits_{\{n_i\}}\Braket{n_1, \dots, n_i, \dots | e^{-\beta \sum\limits_l(\varepsilon_l-\mu) \hat a_l^{\dagger} \hat a_l}| n_1, \dots, n_i, \dots }\\
         &= -k_BT \ln \sum\limits_{\{n_i\}} e^{-\beta \sum\limits_l(\varepsilon_l-\mu) n_l} \braket{n_1, \dots, n_i, \dots | n_1, \dots, n_i, \dots }\\
+        &= -k_BT \ln \sum\limits_{\{n_i\}}\prod\limits_{l=1}^{\infty}e^{-\beta(\varepsilon_l-\mu) n_l}
+        = -k_BT \ln \sum\limits_{n_1=0}^1\sum\limits_{n_2=0}^1\cdots \prod\limits_{l=1}^{\infty}e^{-\beta(\varepsilon_l-\mu) n_l}\\
+        &= -k_BT \ln \prod\limits_{l=1}^{\infty}\sum\limits_{n_l=0}^1 e^{-\beta(\varepsilon_l-\mu) n_l}
+        = -k_BT \ln \prod\limits_{l=1}^{\infty}\left(1+e^{-\beta(\varepsilon_l-\mu)}\right)\\
+        &= -k_BT \sum\limits_{l=1}^{\infty}\ln\left[1+e^{-\beta(\varepsilon_l-\mu)}\right]
+    \end{align*}
+    \textit{Bonus:} for bosons, we have
+    \begin{align*}
+        \Omega_0 &= -k_BT \ln \prod\limits_{l=1}^{\infty}\sum\limits_{n_l=0}^{\infty} e^{-\beta(\varepsilon_l-\mu) n_l}\\
+        &= -k_BT \ln \prod\limits_{l=1}^{\infty} \frac{1}{1-e^{-\beta(\varepsilon_l-\mu)}}\\
+        &= +k_BT \sum \limits_{l=1}^{\infty} \ln \left[1-e^{-\beta(\varepsilon_l-\mu)}\right]
     \end{align*}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                             % EXERCISE 2 %
@@ -116,7 +127,30 @@
     for a fermionic homogeneous system (noninteracting fermions in a box with periodic boundary
     conditions). Express your result with Fermi-Dirac integrals. Give the first three terms of the
     high temperature expansion for $\Omega_0$ and for $N$.
-    
+    \par\textit{Solution.}
+    For a homogeneous fermionic system, we have
+    \begin{align*}
+        &\sum\limits_l \longrightarrow \sum\limits_s\frac{V}{(2\pi)^3}\int \dd^3\mathbf{k}
+        = (2S+1)\frac{V}{2\pi^2}\int\limits_{0}^{\infty} \dd k k^2 \\
+        &\varepsilon_l \longrightarrow \varepsilon(\mathbf{k},s) = \frac{\hbar^2k^2}{2m}
+    \end{align*}
+    Using these, we have
+    \begin{align*}
+        \Omega_0 &= (2S+1)\frac{V}{2\pi^2}\int\limits_{0}^{\infty} \dd k k^2 \ln\left[1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}\right]
+    \end{align*}
+    We apply partial integration:
+    \begin{equation*}
+        \Omega_0 = (2S+1)\frac{V}{2\pi^2}
+        \left[
+            \left[\ln\left(1+e^{-\beta\dots}\right)\frac{k^3}{3}\right]_{0}^{\infty}
+            - \int\limits_{0}^{\infty}\dd k \frac{k^3}{3} \frac{\partial}{\partial k}\left[\ln \dots\right]
+        \right]
+    \end{equation*}
+    \begin{align*}
+        \frac{\partial}{\partial k}\ln\left[1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}\right]
+        = \frac{e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}}{1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}}
+        \left(\frac{-\beta\hbar^2}{m}\right)k
+    \end{align*}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                             % EXERCISE 3 %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
