@@ -136,14 +136,14 @@
     \end{align*}
     Using these, we have
     \begin{align*}
-        \Omega_0 &= (2S+1)\frac{V}{2\pi^2}\int\limits_{0}^{\infty} \dd k k^2 \ln\left[1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}\right]
+        \Omega_0 &= -k_BT (2S+1)\frac{V}{2\pi^2}\int\limits_{0}^{\infty} \dd k k^2 \ln\left[1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}\right]
     \end{align*}
-    We apply partial integration:
+    We apply integration by parts:
     \begin{equation*}
-        \Omega_0 = (2S+1)\frac{V}{2\pi^2}
+        \Omega_0 = -k_BT (2S+1)\frac{V}{2\pi^2}
         \left[
-            \left[\ln\left(1+e^{-\beta\dots}\right)\frac{k^3}{3}\right]_{0}^{\infty}
-            - \int\limits_{0}^{\infty}\dd k \frac{k^3}{3} \frac{\partial}{\partial k}\left[\ln \dots\right]
+            \underbrace{\left[\ln\left(1+e^{-\beta\dots}\right)\frac{k^3}{3}\right]_{0}^{\infty}}_{= \ln 1 \cdot \infty - 0\cdot\ln 2 = 0}
+            - \int\limits_{0}^{\infty}\dd k \frac{k^3}{3} \frac{\partial}{\partial k}\ln\left[1 + \dots\right]
         \right]
     \end{equation*}
     \begin{align*}
@@ -151,6 +151,26 @@
         = \frac{e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}}{1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}}
         \left(\frac{-\beta\hbar^2}{m}\right)k
     \end{align*}
+    \begin{align*}
+        \implies \Omega_0 &= -k_BT (2S+1)\frac{V}{2\pi^2} \int\limits_{0}^{\infty}\dd k
+        k^4\frac{\beta\hbar^2}{3m} \frac{e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}}{1+e^{-\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}}\\
+        & = -k_BT (2S+1)\frac{V\beta\hbar^2}{6\pi^2m}\int\limits_{0}^{\infty}\dd k \frac{k^4}{e^{+\beta\left(\frac{\hbar^2k^2}{2m} - \mu\right)}+1}.
+    \end{align*}
+    In order to be able to get to the Dirac integrals, we have to use the following substitutions:
+    \begin{align*}
+        &x = \frac{\beta\hbar^2k^2}{2m} \implies k = \left(\frac{2m}{\beta\hbar^2}\right)^{1/2}x^{1/2}
+        \implies \dd k = \frac{1}{2}\left(\frac{2m}{\beta\hbar^2}\right)^{1/2} x^{-1/2}\dd x \\
+        &\alpha = -\beta\mu
+    \end{align*}
+    With these substitutions,
+    \begin{align*}
+        \Omega_0 & = -k_BT (2S+1)\frac{V\beta\hbar^2}{6\pi^2m}\frac{1}{2}\left(\frac{2m}{\beta\hbar^2}\right)^{5/2}
+        \int\limits_{0}^{\infty} \dd x \frac{x^{3/2}}{e^{x+\alpha}+1}
+    \end{align*}
+    The complete Fermi-Dirac integral is defined as 
+    \begin{equation*}
+        F_j(\alpha) = \frac{1}{\Gamma(j+1)}\int\limits_{0}^{\infty}\dd x \frac{x^j}{e^{x-\alpha}+1}
+    \end{equation*}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                             % EXERCISE 3 %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
